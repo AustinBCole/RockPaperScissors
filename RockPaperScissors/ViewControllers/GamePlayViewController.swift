@@ -9,21 +9,40 @@
 import UIKit
 
 class GamePlayViewController: UIViewController {
-    
+    //MARK: Private Properties
     private var opponentMethod: PlayerMethod?
     
+    //MARK: IBOutlets
+    @IBOutlet weak var rockCircleImageView: UIImageView!
+    @IBOutlet weak var paperCircleImageView: UIImageView!
+    @IBOutlet weak var scissorsCircleImageView: UIImageView!
+    
+    //MARK: Other Properties
     var deviceConnection: DeviceConnection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceConnection?.methodDelegate = self
-        // Do any additional setup after loading the view.
+        
+        rockCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(GamePlayViewController.rockMethodWasSelected)))
+        paperCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(GamePlayViewController.paperMethodWasSelected)))
+        scissorsCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(GamePlayViewController.scissorsMethodWasSelected)))
+        
+        
     }
 
-    // MARK: - Navigation
+    //MARK: Private Methods
+    @objc private func rockMethodWasSelected() {
+        deviceConnection?.send(method: .rock)
+    }
+    @objc private func paperMethodWasSelected() {
+        deviceConnection?.send(method: .paper)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    }
+    @objc private func scissorsMethodWasSelected() {
+        deviceConnection?.send(method: .scissors)
 
+    }
 }
 
 extension GamePlayViewController: DeviceMethodDelegate {

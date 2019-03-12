@@ -64,11 +64,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AYM-5e-KyM">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AYM-5e-KyM">
                                 <rect key="frame" x="16" y="552" width="95" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="g7A-Sb-vV4">
+                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="g7A-Sb-vV4">
                                 <rect key="frame" x="264" y="552" width="95" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -80,7 +80,7 @@
                                 <rect key="frame" x="157" y="570" width="60" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="srO-YB-tty">
+                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="srO-YB-tty">
                                 <rect key="frame" x="140" y="552" width="95" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -92,6 +92,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bjm-Ec-1r1"/>
                     </view>
+                    <connections>
+                        <outlet property="paperCircleImageView" destination="srO-YB-tty" id="tn7-TM-V17"/>
+                        <outlet property="rockCircleImageView" destination="AYM-5e-KyM" id="GLR-2q-3r6"/>
+                        <outlet property="scissorsCircleImageView" destination="g7A-Sb-vV4" id="1G7-0j-tVW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yti-0p-ees" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
