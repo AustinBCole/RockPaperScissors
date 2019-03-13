@@ -26,6 +26,9 @@ class GamePlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceConnection?.methodDelegate = self
+        scissorsCircleImageView.isHidden = true
+        paperCircleImageView.isHidden = true
+        rockCircleImageView.isHidden = true
         
         
         
@@ -37,6 +40,9 @@ class GamePlayViewController: UIViewController {
 
     @IBAction func startRoundButtonTapped(_ sender: Any) {
         startRoundButton.isHidden = true
+        rockCircleImageView.isHidden = false
+        paperCircleImageView.isHidden = false
+        scissorsCircleImageView.isHidden = false
         configureTimer()
         addGestureRecognizers()
     }
