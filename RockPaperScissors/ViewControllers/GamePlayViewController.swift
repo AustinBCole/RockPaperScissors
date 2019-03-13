@@ -10,6 +10,7 @@ import UIKit
 
 class GamePlayViewController: UIViewController {
     //MARK: Private Properties
+    private var playerMethod: PlayerMethod?
     private var opponentMethod: PlayerMethod?
     private var timer: Timer?
     private var remainingTime = 0
@@ -96,17 +97,14 @@ class GamePlayViewController: UIViewController {
     @objc private func rockMethodWasSelected() {
         print("rockMethodSent")
         updateImageViews(method: .rock)
-        deviceConnection?.send(method: .rock)
     }
     @objc private func paperMethodWasSelected() {
         print("paperMethodSent")
         updateImageViews(method: .paper)
-        deviceConnection?.send(method: .paper)
     }
     @objc private func scissorsMethodWasSelected() {
         print("scissorsMethodSent")
         updateImageViews(method: .scissors)
-        deviceConnection?.send(method: .scissors)
     }
     @objc private func updateTimeLabel() {
         remainingTime -= 1
@@ -117,6 +115,7 @@ class GamePlayViewController: UIViewController {
         if remainingTime <= 0 {
             timer?.invalidate()
             timer = nil
+            deviceConnection?.send(method: playerMethod!)
         }
         timeLabel.text = "\(remainingTime)"
     }
