@@ -10,10 +10,10 @@ import Foundation
 import MultipeerConnectivity
 
 protocol DeviceConnectionDelegate {
-    func connectedDevicesChanged(connectedDevices: [String])
+    func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String])
 }
 
 protocol DeviceMethodDelegate {
-    func methodSelected(method: PlayerMethod)
+    func methodSelected(manager: DeviceConnection, method: PlayerMethod)
 
 }

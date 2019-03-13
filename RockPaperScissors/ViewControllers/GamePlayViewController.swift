@@ -59,17 +59,53 @@ class GamePlayViewController: UIViewController {
         paperCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(paperMethodWasSelected)))
         scissorsCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scissorsMethodWasSelected)))
     }
+    private func updateImageViews(method: PlayerMethod) {
+        switch method {
+        case .rock:
+            if rockCircleImageView.image != UIImage(named:"circle") {
+            rockCircleImageView.image = UIImage(named: "circle")
+            }
+            if paperCircleImageView.image != UIImage(named:"paper") {
+            paperCircleImageView.image = UIImage(named: "paper")
+            }
+            if scissorsCircleImageView.image != UIImage(named:"scissors") {
+            scissorsCircleImageView.image = UIImage(named: "scissors")
+            }
+        case .paper:
+            if rockCircleImageView.image != UIImage(named:"rock") {
+            rockCircleImageView.image = UIImage(named: "rock")
+            }
+            if paperCircleImageView.image != UIImage(named:"circle") {
+            paperCircleImageView.image = UIImage(named: "circle")
+            }
+            if scissorsCircleImageView.image != UIImage(named:"scissors") {
+            scissorsCircleImageView.image = UIImage(named: "scissors")
+            }
+        case .scissors:
+            if rockCircleImageView.image != UIImage(named:"rock") {
+            rockCircleImageView.image = UIImage(named: "rock")
+            }
+            if paperCircleImageView.image != UIImage(named:"paper") {
+            paperCircleImageView.image = UIImage(named: "paper")
+            }
+            if scissorsCircleImageView.image != UIImage(named:"circle") {
+            scissorsCircleImageView.image = UIImage(named: "circle")
+            }
+        }
+    }
     @objc private func rockMethodWasSelected() {
         print("rockMethodSent")
+        updateImageViews(method: .rock)
         deviceConnection?.send(method: .rock)
     }
     @objc private func paperMethodWasSelected() {
         print("paperMethodSent")
+        updateImageViews(method: .paper)
         deviceConnection?.send(method: .paper)
-
     }
     @objc private func scissorsMethodWasSelected() {
         print("scissorsMethodSent")
+        updateImageViews(method: .scissors)
         deviceConnection?.send(method: .scissors)
     }
     @objc private func updateTimeLabel() {
@@ -87,7 +123,7 @@ class GamePlayViewController: UIViewController {
 }
 
 extension GamePlayViewController: DeviceMethodDelegate {
-    func methodSelected(method: PlayerMethod) {
+    func methodSelected(manager: DeviceConnection, method: PlayerMethod) {
         opponentMethod = method
         print(method.rawValue)
     }

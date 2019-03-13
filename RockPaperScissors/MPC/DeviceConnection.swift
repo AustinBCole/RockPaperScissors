@@ -116,19 +116,14 @@ extension DeviceConnection: MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         NSLog("%@", "peer \(peerID) didChangeState: \(state.rawValue)")
-        self.deviceDelegate?.connectedDevicesChanged(connectedDevices: session.connectedPeers.map{$0.displayName})
+        self.deviceDelegate?.connectedDevicesChanged(manager: self, connectedDevices: session.connectedPeers.map{$0.displayName})
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data)")
-        var methodString = ""
-        do {
-            methodString = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! String
-        } catch {
-            NSLog("Error decoding coordinates: \(error)")
-        }
+        guard let methodString = String.init(data: data, encoding: .utf8) else {return}
         let usedMethod = MechanicsController().methodChosenByOpponent(methodString: methodString)
-        self.methodDelegate?.methodSelected(method: usedMethod)
+        self.methodDelegate?.methodSelected(manager: self, method: usedMethod)
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {

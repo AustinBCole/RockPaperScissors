@@ -37,7 +37,7 @@ class StartGameMenuViewController: UIViewController {
 }
 
 extension StartGameMenuViewController: DeviceConnectionDelegate {
-    func connectedDevicesChanged(connectedDevices: [String]) {
+    func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String]) {
         OperationQueue.main.addOperation {
             self.newGameButton.isHidden = false
             self.connectButton.setTitle("Connected!", for: .normal)
