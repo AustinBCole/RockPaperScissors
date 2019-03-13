@@ -47,12 +47,11 @@ class DeviceConnection: NSObject {
      - Parameter coordinates: the CLLocation of the device's current location.
      */
     func send(method: PlayerMethod) {
+        guard let data = method.rawValue.data(using: .utf8) else {return}
         NSLog("%@", "sendMethod: \(method.rawValue) to \(session.connectedPeers.count) peers")
-        let data = Data(base64Encoded: method.rawValue)
-        
         if session.connectedPeers.count > 0 {
             do {
-                try self.session.send(data!, toPeers: session.connectedPeers, with: .reliable)
+                try self.session.send(data, toPeers: session.connectedPeers, with: .reliable)
             } catch {
                 NSLog("%@", "Error for sending: \(error)")
             }

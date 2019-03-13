@@ -89,6 +89,7 @@ class GamePlayViewController: UIViewController {
 extension GamePlayViewController: DeviceMethodDelegate {
     func methodSelected(method: PlayerMethod) {
         opponentMethod = method
+        print(method.rawValue)
     }
 
 }
