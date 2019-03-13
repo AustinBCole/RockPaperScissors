@@ -48,16 +48,11 @@ class DeviceConnection: NSObject {
      */
     func send(method: PlayerMethod) {
         NSLog("%@", "sendMethod: \(method.rawValue) to \(session.connectedPeers.count) peers")
-        var data = Data.init()
-        do {
-            data = try JSONSerialization.data(withJSONObject: method.rawValue, options: .prettyPrinted)
-        } catch {
-            NSLog("Error encoding coordinates: \(error)")
-        }
+        let data = Data(base64Encoded: method.rawValue)
         
         if session.connectedPeers.count > 0 {
             do {
-                try self.session.send(data, toPeers: session.connectedPeers, with: .reliable)
+                try self.session.send(data!, toPeers: session.connectedPeers, with: .reliable)
             } catch {
                 NSLog("%@", "Error for sending: \(error)")
             }
