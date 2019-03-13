@@ -49,9 +49,9 @@ class GamePlayViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GamePlayViewController.updateTimeLabel), userInfo: nil, repeats: true)
     }
     private func addGestureRecognizers() {
-        rockCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(rockMethodWasSelected)))
-        paperCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(paperMethodWasSelected)))
-        scissorsCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(scissorsMethodWasSelected)))
+        rockCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rockMethodWasSelected)))
+        paperCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(paperMethodWasSelected)))
+        scissorsCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scissorsMethodWasSelected)))
     }
     @objc private func rockMethodWasSelected() {
         print("rockMethodSent")
