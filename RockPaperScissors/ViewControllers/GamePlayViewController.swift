@@ -36,7 +36,7 @@ class GamePlayViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-       
+       startRoundButton.isHidden = false
     }
 
     @IBAction func startRoundButtonTapped(_ sender: Any) {
@@ -50,6 +50,33 @@ class GamePlayViewController: UIViewController {
     
     
     //MARK: Private Methods
+    @objc private func rockMethodWasSelected() {
+        print("rockMethodSent")
+        updateImageViews(method: .rock)
+    }
+    @objc private func paperMethodWasSelected() {
+        print("paperMethodSent")
+        updateImageViews(method: .paper)
+    }
+    @objc private func scissorsMethodWasSelected() {
+        print("scissorsMethodSent")
+        updateImageViews(method: .scissors)
+    }
+    @objc private func updateTimeLabel() {
+        remainingTime -= 1
+        if remainingTime < 4 && remainingTime > 1 {
+            timeLabel.textColor = .red
+            timeLabel.animateText()
+        }
+        if remainingTime <= 0 {
+            timer?.invalidate()
+            timer = nil
+            deviceConnection?.send(method: playerMethod!)
+            performSegue(withIdentifier: "GameResultsSegue", sender: self)
+        }
+        timeLabel.text = "\(remainingTime)"
+    }
+    
     private func configureTimer() {
         timeLabel.text = "10"
         remainingTime = 10
@@ -94,30 +121,15 @@ class GamePlayViewController: UIViewController {
             }
         }
     }
-    @objc private func rockMethodWasSelected() {
-        print("rockMethodSent")
-        updateImageViews(method: .rock)
-    }
-    @objc private func paperMethodWasSelected() {
-        print("paperMethodSent")
-        updateImageViews(method: .paper)
-    }
-    @objc private func scissorsMethodWasSelected() {
-        print("scissorsMethodSent")
-        updateImageViews(method: .scissors)
-    }
-    @objc private func updateTimeLabel() {
-        remainingTime -= 1
-        if remainingTime < 4 && remainingTime > 1 {
-            timeLabel.textColor = .red
-            timeLabel.animateText()
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GameResultsSegue" {
+            guard let destinationVC = segue.destination as? GameResultsViewController else { return }
+            
+            destinationVC.playerMethod = self.playerMethod
+            destinationVC.opponentMethod = self.opponentMethod
+            destinationVC.deviceConnection = deviceConnection
         }
-        if remainingTime <= 0 {
-            timer?.invalidate()
-            timer = nil
-            deviceConnection?.send(method: playerMethod!)
-        }
-        timeLabel.text = "\(remainingTime)"
     }
 }
 

@@ -132,11 +132,27 @@
                         <outlet property="scissorsCircleImageView" destination="g7A-Sb-vV4" id="1G7-0j-tVW"/>
                         <outlet property="startRoundButton" destination="Fcs-eL-5I5" id="S8F-mu-Nat"/>
                         <outlet property="timeLabel" destination="JXs-Dx-Fpe" id="U8K-CB-CMc"/>
+                        <segue destination="b3U-Pd-qPU" kind="presentation" id="QO8-N3-YTn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yti-0p-ees" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328.8" y="26.53673163418291"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1L2-FD-5mX">
+            <objects>
+                <viewController id="b3U-Pd-qPU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A2a-f1-WcF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VP2-4b-wyh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2EX-A2-PAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2106" y="27"/>
         </scene>
     </scenes>
     <resources>
