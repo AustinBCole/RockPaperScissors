@@ -122,32 +122,58 @@
                         <outlet property="scissorsCircleImageView" destination="g7A-Sb-vV4" id="1G7-0j-tVW"/>
                         <outlet property="startRoundButton" destination="Fcs-eL-5I5" id="S8F-mu-Nat"/>
                         <outlet property="timeLabel" destination="JXs-Dx-Fpe" id="U8K-CB-CMc"/>
-                        <segue destination="b3U-Pd-qPU" kind="presentation" id="QO8-N3-YTn"/>
+                        <segue destination="b3U-Pd-qPU" kind="presentation" identifier="GameResultsSegue" id="QO8-N3-YTn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yti-0p-ees" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328.8" y="26.53673163418291"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Results View Controller-->
         <scene sceneID="1L2-FD-5mX">
             <objects>
-                <viewController id="b3U-Pd-qPU" sceneMemberID="viewController">
+                <viewController id="b3U-Pd-qPU" customClass="GameResultsViewController" customModule="RockPaperScissors" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A2a-f1-WcF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R5K-7D-L5M">
+                                <rect key="frame" x="-100" y="283.5" width="98.5" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="53z-vh-bbq"/>
+                                    <constraint firstAttribute="width" constant="98.5" id="gph-is-jMg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gop-E9-CN8">
+                                <rect key="frame" x="376.5" y="283.5" width="98.5" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98.5" id="GYC-gP-jWn"/>
+                                    <constraint firstAttribute="height" constant="100" id="gkM-fD-fyB"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R5K-7D-L5M" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" constant="-100" id="9aN-ts-lU9"/>
+                            <constraint firstItem="R5K-7D-L5M" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="FPz-wt-q6V"/>
+                            <constraint firstItem="gop-E9-CN8" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="W3l-4d-ogp"/>
+                            <constraint firstItem="VP2-4b-wyh" firstAttribute="trailing" secondItem="gop-E9-CN8" secondAttribute="trailing" constant="-100" id="qVn-ji-yo4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VP2-4b-wyh"/>
                     </view>
+                    <connections>
+                        <outlet property="losingImageView" destination="gop-E9-CN8" id="Igd-pK-iIv"/>
+                        <outlet property="winningImageView" destination="R5K-7D-L5M" id="1Lp-Nb-zA7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EX-A2-PAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2106" y="27"/>
+            <point key="canvasLocation" x="2262" y="26"/>
         </scene>
     </scenes>
     <resources>
-        <image name="paper" width="1200" height="1200"/>
-        <image name="rock" width="1200" height="1200"/>
-        <image name="scissors" width="1200" height="1200"/>
+        <image name="paper" width="400" height="400"/>
+        <image name="rock" width="400" height="400"/>
+        <image name="scissors" width="400" height="400"/>
     </resources>
 </document>

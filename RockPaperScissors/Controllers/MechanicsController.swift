@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-
-
 enum PlayerMethod: String, RawRepresentable {
     case rock = "rock"
     case paper = "paper"
@@ -18,6 +16,15 @@ enum PlayerMethod: String, RawRepresentable {
 }
 
 class MechanicsController {
+    
+    func methodChosenByOpponent(methodString: String) -> PlayerMethod {
+        if methodString == PlayerMethod.paper.rawValue {
+            return PlayerMethod.paper
+        } else if methodString == PlayerMethod.scissors.rawValue {
+            return PlayerMethod.scissors
+        }
+        return PlayerMethod.rock
+    }
     
     class func resolveGame(playerMethod: PlayerMethod, opponentMethod: PlayerMethod) -> (winningMethod: PlayerMethod, losingMethod: PlayerMethod)? {
         if playerMethod == opponentMethod {return nil}
