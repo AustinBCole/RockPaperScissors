@@ -72,13 +72,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zt1-vq-ia8">
                                 <rect key="frame" x="20" y="547" width="335" height="100"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock" highlightedImage="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AYM-5e-KyM">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock" translatesAutoresizingMaskIntoConstraints="NO" id="AYM-5e-KyM">
                                         <rect key="frame" x="0.0" y="0.0" width="98.5" height="100"/>
                                     </imageView>
-                                    <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper" highlightedImage="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="srO-YB-tty">
+                                    <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper" translatesAutoresizingMaskIntoConstraints="NO" id="srO-YB-tty">
                                         <rect key="frame" x="118.5" y="0.0" width="98" height="100"/>
                                     </imageView>
-                                    <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scissors" highlightedImage="circle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="g7A-Sb-vV4">
+                                    <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scissors" translatesAutoresizingMaskIntoConstraints="NO" id="g7A-Sb-vV4">
                                         <rect key="frame" x="236.5" y="0.0" width="98.5" height="100"/>
                                     </imageView>
                                 </subviews>
@@ -146,7 +146,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle.jpg" width="1200" height="1200"/>
         <image name="paper" width="1200" height="1200"/>
         <image name="rock" width="1200" height="1200"/>
         <image name="scissors" width="1200" height="1200"/>
