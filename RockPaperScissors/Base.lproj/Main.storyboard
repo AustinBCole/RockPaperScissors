@@ -250,6 +250,7 @@
         <image name="scissors" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="QO8-N3-YTn"/>
         <segue reference="gHi-BH-mKR"/>
     </inferredMetricsTieBreakers>
 </document>

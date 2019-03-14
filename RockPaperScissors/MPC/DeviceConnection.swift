@@ -15,6 +15,10 @@ class DeviceConnection: NSObject {
         session.delegate = self
         return session
     }()
+    
+    ///The shared instance of DeviceConnection, implementing a Singleton+ Pattern
+    static let shared = DeviceConnection()
+    
     // Service type must be a unique string, at most 15 characters long
     // and can contain only ASCII lowercase letters, numbers and hyphens.
     private let ColorServiceType = "example-color"
@@ -26,6 +30,7 @@ class DeviceConnection: NSObject {
     
     var deviceDelegate: DeviceConnectionDelegate?
     var methodDelegate: DeviceMethodDelegate?
+    var isReadyDelegate: DeviceIsReadyDelegate?
     
     override init() {
         self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerID, discoveryInfo: nil, serviceType: ColorServiceType)
@@ -53,7 +58,18 @@ class DeviceConnection: NSObject {
             do {
                 try self.session.send(data, toPeers: session.connectedPeers, with: .reliable)
             } catch {
-                NSLog("%@", "Error for sending: \(error)")
+                NSLog("%@", "Error for sending playerMethodData: \(error)")
+            }
+        }
+    }
+    func send(isReady: Bool) {
+        guard let data = isReady.description.data(using: .utf8) else {return}
+        NSLog("%@", "sendIsReady: \(isReady) to \(session.connectedPeers.count) peers")
+        if session.connectedPeers.count > 0 {
+            do {
+                try self.session.send(data, toPeers: session.connectedPeers, with: .reliable)
+            } catch {
+                NSLog("%@", "Error for sending isReadyData: \(error)")
             }
         }
     }
@@ -121,9 +137,14 @@ extension DeviceConnection: MCSessionDelegate {
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data) from peer: \(peerID)")
-        guard let methodString = String.init(data: data, encoding: .utf8) else {return}
-        let usedMethod = MechanicsController().methodChosenByOpponent(methodString: methodString)
+        guard let dataString = String.init(data: data, encoding: .utf8) else {return}
+        if dataString == "rock" || dataString == "scissors" || dataString == "paper" {
+        let usedMethod = MechanicsController().methodChosenByOpponent(methodString: dataString)
         self.methodDelegate?.methodSelected(manager: self, method: usedMethod)
+        } else {
+            guard let isReady = Bool(dataString) else {return}
+            self.isReadyDelegate?.opponentIsRead(manager: self, isReady: isReady)
+        }
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {

@@ -17,6 +17,10 @@ enum PlayerMethod: String, RawRepresentable {
 
 class MechanicsController {
     
+    //MARK: Static Properties
+    static var playerIsReady: Bool = false
+    static var opponentIsRead: Bool = false
+    
     func methodChosenByOpponent(methodString: String) -> PlayerMethod {
         if methodString == PlayerMethod.paper.rawValue {
             return PlayerMethod.paper
