@@ -18,6 +18,7 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var paperCircleImageView: UIImageView!
     @IBOutlet weak var scissorsCircleImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var startRoundButton: UIButton!
     
     //MARK: Other Properties
     var deviceConnection: DeviceConnection?
@@ -25,34 +26,51 @@ class GamePlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceConnection?.methodDelegate = self
-        rockCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(GamePlayViewController.rockMethodWasSelected)))
-        paperCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(GamePlayViewController.paperMethodWasSelected)))
-        scissorsCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(GamePlayViewController.scissorsMethodWasSelected)))
+        
         
         
         
     }
     override func viewWillAppear(_ animated: Bool) {
-       timeLabel.text = "10"
+       
+    }
+
+    @IBAction func startRoundButtonTapped(_ sender: Any) {
+        startRoundButton.isHidden = true
+        configureTimer()
+        addGestureRecognizers()
+    }
+    
+    
+    //MARK: Private Methods
+    private func configureTimer() {
+        timeLabel.text = "10"
         remainingTime = 10
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GamePlayViewController.updateTimeLabel), userInfo: nil, repeats: true)
     }
-
-    //MARK: Private Methods
+    private func addGestureRecognizers() {
+        rockCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(rockMethodWasSelected)))
+        paperCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(paperMethodWasSelected)))
+        scissorsCircleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(scissorsMethodWasSelected)))
+    }
     @objc private func rockMethodWasSelected() {
+        print("rockMethodSent")
         deviceConnection?.send(method: .rock)
     }
     @objc private func paperMethodWasSelected() {
+        print("paperMethodSent")
         deviceConnection?.send(method: .paper)
 
     }
     @objc private func scissorsMethodWasSelected() {
+        print("scissorsMethodSent")
         deviceConnection?.send(method: .scissors)
     }
     @objc private func updateTimeLabel() {
         remainingTime -= 1
-        if remainingTime < 4 {
+        if remainingTime < 4 && remainingTime > 1 {
             timeLabel.textColor = .red
+            timeLabel.animateText()
         }
         if remainingTime <= 0 {
             timer?.invalidate()

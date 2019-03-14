@@ -64,15 +64,20 @@ class DeviceConnection: NSObject {
         }
     }
     
-    ///Start advertising to, and browsing for, nearby peers.
-    func startBroadcasting() {
+    ///Start advertising to nearby peers.
+    func startAdvertising() {
         self.serviceAdvertiser.startAdvertisingPeer()
-        self.serviceBrowser.startBrowsingForPeers()
-        
     }
-    ///Stop broadcasting to, and browsing for, nearby peers.
-    func stopBroadcasting() {
+    ///Stop broadcasting to nearby peers.
+    func stopAdvertising() {
         self.serviceAdvertiser.stopAdvertisingPeer()
+    }
+    ///Start browsing for nearby peers.
+    func startBrowsing() {
+        self.serviceBrowser.startBrowsingForPeers()
+    }
+    ///Stop browsing for nearby peers.
+    func stopBrowsing() {
         self.serviceBrowser.stopBrowsingForPeers()
     }
     
@@ -117,7 +122,7 @@ extension DeviceConnection: MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         NSLog("%@", "peer \(peerID) didChangeState: \(state.rawValue)")
-        self.deviceDelegate?.connectedDevicesChanged()
+        self.deviceDelegate?.connectedDevicesChanged(connectedDevices: session.connectedPeers.map{$0.displayName})
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {

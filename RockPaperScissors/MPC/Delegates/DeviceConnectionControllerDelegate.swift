@@ -10,7 +10,7 @@ import Foundation
 import MultipeerConnectivity
 
 protocol DeviceConnectionDelegate {
-    func connectedDevicesChanged()
+    func connectedDevicesChanged(connectedDevices: [String])
 }
 
 protocol DeviceMethodDelegate {

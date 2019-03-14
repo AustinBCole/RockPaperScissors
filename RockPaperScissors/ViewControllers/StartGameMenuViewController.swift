@@ -11,6 +11,7 @@ import UIKit
 class StartGameMenuViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var connectedDevicesLabel: UILabel!
     
     let deviceConnection = DeviceConnection()
     
@@ -21,7 +22,8 @@ class StartGameMenuViewController: UIViewController {
     }
     
     @IBAction func connectButton(_ sender: Any) {
-        deviceConnection.startBroadcasting()
+        deviceConnection.startAdvertising()
+        deviceConnection.startBrowsing()
         connectButton.setTitle("Connecting...", for: .normal)
     }
     
@@ -35,12 +37,13 @@ class StartGameMenuViewController: UIViewController {
 }
 
 extension StartGameMenuViewController: DeviceConnectionDelegate {
-    
-    func connectedDevicesChanged() {
-        newGameButton.isHidden = false
-        connectButton.setTitle("Connected!", for: .normal)
-        deviceConnection.stopBroadcasting()
+    func connectedDevicesChanged(connectedDevices: [String]) {
+        OperationQueue.main.addOperation {
+            self.newGameButton.isHidden = false
+            self.connectButton.setTitle("Connected!", for: .normal)
+            self.connectedDevicesLabel.text = "1"
+        }
+        deviceConnection.stopBrowsing()
+        deviceConnection.stopAdvertising()
     }
-    
-    
 }
