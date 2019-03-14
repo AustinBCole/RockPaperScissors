@@ -27,7 +27,6 @@ class MechanicsController {
     }
     
     class func resolveGame(playerMethod: PlayerMethod, opponentMethod: PlayerMethod) -> (winningMethod: PlayerMethod, losingMethod: PlayerMethod, tie: Bool)? {
-        if playerMethod == opponentMethod {return nil}
         switch playerMethod {
         case .rock:
             if opponentMethod == .scissors {

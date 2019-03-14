@@ -179,18 +179,36 @@
                                     <constraint firstAttribute="height" constant="100" id="pxT-kI-9mU"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="POW! with transparent background" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-dt-Zcw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-dt-Zcw">
                                 <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="EwS-9U-cPh"/>
                                     <constraint firstAttribute="width" constant="240" id="ZGx-uP-EG3"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie Game!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkO-8x-1Ut">
+                                <rect key="frame" x="-12.5" y="403.5" width="400" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="plr-6T-yG4"/>
+                                    <constraint firstAttribute="height" constant="60" id="sRK-mY-7Cb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf1-tD-ziy">
+                                <rect key="frame" x="152" y="483.5" width="71" height="30"/>
+                                <state key="normal" title="Play Again"/>
+                                <connections>
+                                    <segue destination="vsN-Mw-fu6" kind="presentation" id="gHi-BH-mKR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wgJ-dt-Zcw" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="1H9-N2-4zf"/>
                             <constraint firstItem="Vfk-pI-5aa" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" constant="100" id="4h9-z3-jDZ"/>
+                            <constraint firstItem="Mf1-tD-ziy" firstAttribute="centerX" secondItem="A2a-f1-WcF" secondAttribute="centerX" id="5Cq-mI-NL2"/>
                             <constraint firstItem="0LB-ck-zs3" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" constant="-100" id="APj-LB-oHe"/>
                             <constraint firstItem="WPi-3Z-c4r" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" id="IrG-K2-tzi"/>
                             <constraint firstItem="VP2-4b-wyh" firstAttribute="trailing" secondItem="xvf-ja-DU7" secondAttribute="trailing" constant="92" id="K7i-WX-JlC"/>
@@ -198,11 +216,14 @@
                             <constraint firstItem="0LB-ck-zs3" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="PgA-mz-5mz"/>
                             <constraint firstItem="Xbi-WA-KAO" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="S8E-cT-naI"/>
                             <constraint firstItem="gop-E9-CN8" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="W3l-4d-ogp"/>
+                            <constraint firstItem="UkO-8x-1Ut" firstAttribute="top" secondItem="WPi-3Z-c4r" secondAttribute="bottom" constant="20" id="a0P-fe-B58"/>
                             <constraint firstAttribute="trailing" secondItem="Xbi-WA-KAO" secondAttribute="trailing" id="db9-c4-hr8"/>
+                            <constraint firstItem="Mf1-tD-ziy" firstAttribute="top" secondItem="UkO-8x-1Ut" secondAttribute="bottom" constant="20" id="doP-ht-jPK"/>
                             <constraint firstItem="wgJ-dt-Zcw" firstAttribute="centerX" secondItem="A2a-f1-WcF" secondAttribute="centerX" id="don-pY-xOw"/>
                             <constraint firstItem="Vfk-pI-5aa" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" constant="-73" id="egm-vX-2W7"/>
                             <constraint firstItem="WPi-3Z-c4r" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="peW-ph-mBy"/>
                             <constraint firstItem="VP2-4b-wyh" firstAttribute="trailing" secondItem="gop-E9-CN8" secondAttribute="trailing" constant="-100" id="qVn-ji-yo4"/>
+                            <constraint firstItem="UkO-8x-1Ut" firstAttribute="centerX" secondItem="A2a-f1-WcF" secondAttribute="centerX" id="sK6-Q3-w3E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VP2-4b-wyh"/>
                     </view>
@@ -210,7 +231,9 @@
                         <outlet property="losingImageView" destination="gop-E9-CN8" id="Igd-pK-iIv"/>
                         <outlet property="losingImageViewThree" destination="xvf-ja-DU7" id="FDK-qB-teJ"/>
                         <outlet property="losingImageViewTwo" destination="Xbi-WA-KAO" id="rxz-bt-xif"/>
+                        <outlet property="playAgainButton" destination="Mf1-tD-ziy" id="ySK-u8-UZn"/>
                         <outlet property="powImageView" destination="wgJ-dt-Zcw" id="RBE-C5-2tV"/>
+                        <outlet property="tieGameLabel" destination="UkO-8x-1Ut" id="xRP-LH-YeM"/>
                         <outlet property="winningImageView" destination="0LB-ck-zs3" id="S4G-gW-YUB"/>
                         <outlet property="winningImageViewThree" destination="Vfk-pI-5aa" id="N1R-1C-gos"/>
                         <outlet property="winningImageViewTwo" destination="WPi-3Z-c4r" id="FXp-eu-wOh"/>
@@ -222,9 +245,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="POW! with transparent background" width="535" height="336.14862060546875"/>
         <image name="paper" width="400" height="400"/>
         <image name="rock" width="400" height="400"/>
         <image name="scissors" width="400" height="400"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gHi-BH-mKR"/>
+    </inferredMetricsTieBreakers>
 </document>
