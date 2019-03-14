@@ -143,7 +143,7 @@ extension DeviceConnection: MCSessionDelegate {
         self.methodDelegate?.methodSelected(manager: self, method: usedMethod)
         } else {
             guard let isReady = Bool(dataString) else {return}
-            self.isReadyDelegate?.opponentIsRead(manager: self, isReady: isReady)
+            self.isReadyDelegate?.opponentIsReady(manager: self, isReady: isReady)
         }
     }
     

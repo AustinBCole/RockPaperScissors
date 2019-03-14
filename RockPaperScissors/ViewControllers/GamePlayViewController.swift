@@ -9,6 +9,7 @@
 import UIKit
 
 class GamePlayViewController: UIViewController {
+    
     //MARK: Private Properties
     private var playerMethod: PlayerMethod?
     private var opponentMethod: PlayerMethod?
@@ -39,16 +40,13 @@ class GamePlayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
        startRoundButton.isHidden = false
     }
+    
+    
 
     @IBAction func startRoundButtonTapped(_ sender: Any) {
-        startRoundButton.isHidden = true
-        rockCircleImageView.isHidden = false
-        paperCircleImageView.isHidden = false
-        scissorsCircleImageView.isHidden = false
-        configureTimer()
-        addGestureRecognizers()
+        deviceConnection?.send(isReady: true)
+        startRound()
     }
-    
     
     //MARK: Private Methods
     @objc private func rockMethodWasSelected() {
@@ -127,6 +125,14 @@ class GamePlayViewController: UIViewController {
             }
         }
     }
+    private func startRound() {
+        startRoundButton.isHidden = true
+        rockCircleImageView.isHidden = false
+        paperCircleImageView.isHidden = false
+        scissorsCircleImageView.isHidden = false
+        configureTimer()
+        addGestureRecognizers()
+    }
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GameResultsSegue" {
@@ -144,5 +150,11 @@ extension GamePlayViewController: DeviceMethodDelegate {
         opponentMethod = method
         print(method.rawValue)
     }
-
+}
+extension GamePlayViewController: DeviceIsReadyDelegate {
+    func opponentIsReady(manager: DeviceConnection, isReady: Bool) {
+        if isReady == true {
+        startRound()
+        }
+    }
 }

@@ -18,5 +18,5 @@ protocol DeviceMethodDelegate {
 
 }
 protocol DeviceIsReadyDelegate {
-    func opponentIsRead(manager: DeviceConnection, isReady: Bool)
+    func opponentIsReady(manager: DeviceConnection, isReady: Bool)
 }

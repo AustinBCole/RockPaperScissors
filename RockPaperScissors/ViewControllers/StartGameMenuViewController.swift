@@ -26,14 +26,6 @@ class StartGameMenuViewController: UIViewController {
         deviceConnection.startBrowsing()
         connectButton.setTitle("Connecting...", for: .normal)
     }
-    
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationVC = segue.destination as? GamePlayViewController else { return }
-        
-        destinationVC.deviceConnection = self.deviceConnection
-    }
 }
 
 extension StartGameMenuViewController: DeviceConnectionDelegate {
@@ -46,4 +38,9 @@ extension StartGameMenuViewController: DeviceConnectionDelegate {
         deviceConnection.stopBrowsing()
         deviceConnection.stopAdvertising()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                guard let destinationVC = segue.destination as? GamePlayViewController else { return }
+            
+        destinationVC.deviceConnection = deviceConnection
+        }
 }

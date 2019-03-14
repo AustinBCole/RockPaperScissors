@@ -99,7 +99,7 @@
                                 <rect key="frame" x="146.5" y="507" width="82" height="30"/>
                                 <state key="normal" title="Start Round"/>
                                 <connections>
-                                    <action selector="startRoundButtonTapped:" destination="vsN-Mw-fu6" eventType="touchUpInside" id="c23-yd-hdd"/>
+                                    <action selector="startRoundButtonTapped:" destination="vsN-Mw-fu6" eventType="touchUpInside" id="qvG-xG-dHm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -120,7 +120,7 @@
                         <outlet property="paperCircleImageView" destination="srO-YB-tty" id="tn7-TM-V17"/>
                         <outlet property="rockCircleImageView" destination="AYM-5e-KyM" id="GLR-2q-3r6"/>
                         <outlet property="scissorsCircleImageView" destination="g7A-Sb-vV4" id="1G7-0j-tVW"/>
-                        <outlet property="startRoundButton" destination="Fcs-eL-5I5" id="S8F-mu-Nat"/>
+                        <outlet property="startRoundButton" destination="Fcs-eL-5I5" id="sFa-Hl-IHj"/>
                         <outlet property="timeLabel" destination="JXs-Dx-Fpe" id="U8K-CB-CMc"/>
                         <segue destination="b3U-Pd-qPU" kind="presentation" identifier="GameResultsSegue" id="QO8-N3-YTn"/>
                     </connections>
