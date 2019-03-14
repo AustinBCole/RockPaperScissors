@@ -26,27 +26,34 @@ class MechanicsController {
         return PlayerMethod.rock
     }
     
-    class func resolveGame(playerMethod: PlayerMethod, opponentMethod: PlayerMethod) -> (winningMethod: PlayerMethod, losingMethod: PlayerMethod)? {
+    class func resolveGame(playerMethod: PlayerMethod, opponentMethod: PlayerMethod) -> (winningMethod: PlayerMethod, losingMethod: PlayerMethod, tie: Bool)? {
         if playerMethod == opponentMethod {return nil}
         switch playerMethod {
         case .rock:
             if opponentMethod == .scissors {
-                return (winningMethod: playerMethod, losingMethod: opponentMethod)
-            } else {
-                return (winningMethod: opponentMethod, losingMethod: playerMethod)
+                return (winningMethod: playerMethod, losingMethod: opponentMethod, tie: false)
+            } else if opponentMethod == .paper {
+                return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: false)
+            } else if opponentMethod == .paper {
+                return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: true)
             }
         case .paper:
             if opponentMethod == .rock {
-                return (winningMethod: playerMethod, losingMethod: opponentMethod)
-            } else {
-                return (winningMethod: opponentMethod, losingMethod: playerMethod)
+                return (winningMethod: playerMethod, losingMethod: opponentMethod, tie: false)
+            } else if opponentMethod == .scissors {
+                return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: false)
+            } else if opponentMethod == .paper {
+                return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: true)
             }
         case .scissors:
             if opponentMethod == .paper {
-                return (winningMethod: playerMethod, losingMethod: opponentMethod)
-            } else {
-                return (winningMethod: opponentMethod, losingMethod: playerMethod)
+                return (winningMethod: playerMethod, losingMethod: opponentMethod, tie: false)
+            } else if opponentMethod == .rock {
+                return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: false)
+            } else if opponentMethod == .scissors {
+                return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: true)
             }
         }
+        return nil
     }
 }

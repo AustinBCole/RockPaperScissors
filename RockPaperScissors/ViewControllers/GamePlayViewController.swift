@@ -72,10 +72,12 @@ class GamePlayViewController: UIViewController {
             timeLabel.textColor = .red
             timeLabel.animateText()
         }
+        if remainingTime <= 2 {
+            deviceConnection?.send(method: playerMethod!)
+        }
         if remainingTime <= 0 {
             timer?.invalidate()
             timer = nil
-            deviceConnection?.send(method: playerMethod!)
             performSegue(withIdentifier: "GameResultsSegue", sender: self)
         }
         timeLabel.text = "\(remainingTime)"

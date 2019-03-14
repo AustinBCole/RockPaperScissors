@@ -20,7 +20,16 @@ class GameResultsViewController: UIViewController {
     
     //MARK: IBOutlets
     @IBOutlet weak var winningImageView: UIImageView!
+    @IBOutlet weak var winningImageViewTwo: UIImageView!
+    @IBOutlet weak var winningImageViewThree: UIImageView!
+    
+    
+    
     @IBOutlet weak var losingImageView: UIImageView!
+    @IBOutlet weak var losingImageViewTwo: UIImageView!
+    @IBOutlet weak var losingImageViewThree: UIImageView!
+    
+    @IBOutlet weak var powImageView: UIImageView!
     
     
     override func viewDidLoad() {
@@ -30,29 +39,75 @@ class GameResultsViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let gameResults = MechanicsController.resolveGame(playerMethod: playerMethod ?? PlayerMethod.rock, opponentMethod: opponentMethod ?? PlayerMethod.paper) else {return}
-        winningImageView.image = UIImage(named: gameResults.winningMethod.rawValue)
-        losingImageView.image = UIImage(named: gameResults.losingMethod.rawValue)
-        print(winningImageView.constraints.map{$0.constant})
-        entranceAnimation()
+        powImageView.image = UIImage(named: "POW! with transparent background")
         
+        losingImageViewTwo.isHidden = true
+        losingImageViewThree.isHidden = true
+        winningImageViewTwo.isHidden = true
+        winningImageViewThree.isHidden = true
+        powImageView.isHidden = true
+        
+        
+        guard let gameResults = MechanicsController.resolveGame(playerMethod: playerMethod ?? PlayerMethod.rock, opponentMethod: opponentMethod ?? PlayerMethod.paper) else {
+            
+            
+            
+            return
+        }
+        
+        winningImageView.image = UIImage(named: gameResults.winningMethod.rawValue)
+        winningImageViewTwo.image = UIImage(named: gameResults.winningMethod.rawValue)
+        winningImageViewThree.image = UIImage(named: gameResults.winningMethod.rawValue)
+        
+        losingImageView.image = UIImage(named: gameResults.losingMethod.rawValue)
+        losingImageViewTwo.image = UIImage(named: gameResults.losingMethod.rawValue)
+        losingImageViewThree.image = UIImage(named: gameResults.losingMethod.rawValue)
+        victoryAnimation()
         
     }
     //MARK: Private Methods
-    private func entranceAnimation() {
+    private func victoryAnimation() {
         let animationDuration = 3.0
         let position: CGFloat = 100.0
-        let viewToAnimate = winningImageView
-        
         UIView.animateKeyframes(withDuration: animationDuration, delay: 0.0, options: .calculationModeLinear, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
-                viewToAnimate?.frame.origin.x = (viewToAnimate?.frame.origin.x)! + position
-            })
-            UIView.addKeyframe(withRelativeStartTime: 1/4, relativeDuration: 1/4, animations: {
-                viewToAnimate?.frame.origin.y = (viewToAnimate?.frame.origin.y)! - (position * 2)
+                self.winningImageView?.frame.origin.x = self.winningImageView.frame.origin.x + position
+                self.losingImageView?.frame.origin.x = self.losingImageView.frame.origin.x - position
             })
         }, completion: { completed in
-            
+            if completed {
+                self.losingImageViewTwo.isHidden = false
+                self.winningImageViewTwo.isHidden = false
+                self.losingImageView.isHidden = true
+                self.winningImageView.isHidden = true
+            }
+        })
+        UIView.animateKeyframes(withDuration: 1.0, delay: animationDuration + 2.0, options: .calculationModeLinear, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
+
+                self.winningImageViewTwo.frame.origin.x = (self.winningImageViewTwo?.frame.origin.x)! + position
+                self.losingImageViewTwo.frame.origin.x = self.losingImageViewTwo.frame.origin.x - 92
+            })
+        }, completion: { completed in
+            if completed {
+                self.winningImageViewThree.isHidden = false
+                self.losingImageViewThree.isHidden = false
+                self.winningImageViewTwo.isHidden = true
+                self.losingImageViewTwo.isHidden = true
+                
+                self.powImageView.isHidden = false
+            }
+        })
+        UIView.animateKeyframes(withDuration: 1.0, delay: animationDuration + 3.0, options: .calculationModeLinear, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
+                
+                self.losingImageViewThree.frame.origin.x = self.losingImageViewTwo.frame.origin.x + 200
+                self.losingImageViewThree.frame.origin.y = self.losingImageViewThree.frame.origin.y - 300
+            })
+        }, completion: { completed in
+            if completed {
+                self.losingImageViewThree.isHidden = true
+            }
         })
     }
     
