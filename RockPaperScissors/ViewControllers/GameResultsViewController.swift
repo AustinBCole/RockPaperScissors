@@ -28,7 +28,7 @@ class GameResultsViewController: UIViewController {
     @IBOutlet weak var losingImageViewThree: UIImageView!
     
     @IBOutlet weak var powImageView: UIImageView!
-
+    
     
     
     override func viewDidLoad() {
@@ -47,8 +47,9 @@ class GameResultsViewController: UIViewController {
         powImageView.isHidden = true
         playAgainButton.isHidden = true
         
+        let randomMethodArray: Array<PlayerMethod> = [.rock, .paper, .scissors]
         
-        guard let gameResults = MechanicsController.resolveGame(playerMethod: playerMethod ?? PlayerMethod.rock, opponentMethod: opponentMethod ?? PlayerMethod.paper) else {
+        guard let gameResults = MechanicsController.resolveGame(playerMethod: playerMethod ?? PlayerMethod.rock, opponentMethod: opponentMethod ?? randomMethodArray.randomElement()!) else {
             return
         }
         
@@ -61,17 +62,23 @@ class GameResultsViewController: UIViewController {
         losingImageViewThree.image = UIImage(named: gameResults.losingMethod.rawValue)
         
         powImageView.image = UIImage(named: "POW! with transparent background")
-
-
+        
+        
         
         if gameResults.tie == true {
-        tieAnimation()
-        return
+            tieAnimation()
+            return
         } else {
-        victoryAnimation()
+            victoryAnimation()
         }
         
     }
+    
+    //MARK: IBActions
+    @IBAction func playAgainButtonTapped(_ sender: Any) {
+    }
+    
+    
     //MARK: Private Methods
     private func victoryAnimation() {
         let animationDuration = 3.0
@@ -91,7 +98,7 @@ class GameResultsViewController: UIViewController {
         })
         UIView.animateKeyframes(withDuration: 1.0, delay: animationDuration + 2.0, options: .calculationModeLinear, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
-
+                
                 self.winningImageViewTwo.frame.origin.x = (self.winningImageViewTwo?.frame.origin.x)! + position
                 self.losingImageViewTwo.frame.origin.x = self.losingImageViewTwo.frame.origin.x - 92
             })
@@ -117,7 +124,7 @@ class GameResultsViewController: UIViewController {
                 self.playAgainButton.isHidden = false
                 
                 if UIImage(named: (self.playerMethod?.rawValue)!) == self.winningImageView.image {
-                self.tieGameLabel.text = "You Win!"
+                    self.tieGameLabel.text = "You Win!"
                 } else {
                     self.tieGameLabel.text = "You Lose!"
                 }
@@ -163,14 +170,10 @@ class GameResultsViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let destinationVC = segue.destination as? GamePlayViewController else { return }
+        
+        destinationVC.deviceConnection = deviceConnection
     }
-    */
-
+    
 }

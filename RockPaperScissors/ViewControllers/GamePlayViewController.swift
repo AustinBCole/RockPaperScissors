@@ -28,6 +28,7 @@ class GamePlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceConnection?.methodDelegate = self
+        deviceConnection?.isReadyDelegate = self
         scissorsCircleImageView.isHidden = true
         paperCircleImageView.isHidden = true
         rockCircleImageView.isHidden = true
@@ -148,13 +149,14 @@ class GamePlayViewController: UIViewController {
 extension GamePlayViewController: DeviceMethodDelegate {
     func methodSelected(manager: DeviceConnection, method: PlayerMethod) {
         opponentMethod = method
-        print(method.rawValue)
     }
 }
 extension GamePlayViewController: DeviceIsReadyDelegate {
     func opponentIsReady(manager: DeviceConnection, isReady: Bool) {
+        OperationQueue.main.addOperation {
         if isReady == true {
-        startRound()
+        self.startRound()
+            }
         }
     }
 }
