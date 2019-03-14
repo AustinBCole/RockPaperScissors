@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A237AD0E223AE28500EC6D83 /* UIView+BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A237AD0D223AE28500EC6D83 /* UIView+BackgroundImage.swift */; };
 		A2FD3E1E223843DB00A2AED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD3E1D223843DB00A2AED7 /* AppDelegate.swift */; };
 		A2FD3E23223843DB00A2AED7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FD3E21223843DB00A2AED7 /* Main.storyboard */; };
 		A2FD3E25223843DB00A2AED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FD3E24223843DB00A2AED7 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A237AD0D223AE28500EC6D83 /* UIView+BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BackgroundImage.swift"; sourceTree = "<group>"; };
 		A2FD3E1A223843DB00A2AED7 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FD3E1D223843DB00A2AED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2FD3E22223843DB00A2AED7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				A2FD3E4322386F3B00A2AED7 /* UILabel+TextAnimation.swift */,
+				A237AD0D223AE28500EC6D83 /* UIView+BackgroundImage.swift */,
 			);
 			path = "UIKit Extensions";
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				A2FD3E1E223843DB00A2AED7 /* AppDelegate.swift in Sources */,
 				A2FD3E362238446100A2AED7 /* StartGameMenuViewController.swift in Sources */,
 				A2FD3E322238441900A2AED7 /* GameResultsController.swift in Sources */,
+				A237AD0E223AE28500EC6D83 /* UIView+BackgroundImage.swift in Sources */,
 				A2FD3E3A22384AA100A2AED7 /* DeviceConnectionControllerDelegate.swift in Sources */,
 				A2FD3E342238444B00A2AED7 /* GamePlayViewController.swift in Sources */,
 				A2FD3E402238553400A2AED7 /* GameResultsViewController.swift in Sources */,

@@ -10,8 +10,6 @@ import UIKit
 import SpriteKit
 
 class GameResultsViewController: UIViewController {
-    //MARK: Private Properties
-    
     //MARK: Other Properties
     var playerMethod: PlayerMethod?
     var opponentMethod: PlayerMethod?
@@ -35,7 +33,7 @@ class GameResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addBackground()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +115,13 @@ class GameResultsViewController: UIViewController {
             if completed {
                 self.losingImageViewThree.isHidden = true
                 self.playAgainButton.isHidden = false
+                
+                if UIImage(named: (self.playerMethod?.rawValue)!) == self.winningImageView.image {
+                self.tieGameLabel.text = "You Win!"
+                } else {
+                    self.tieGameLabel.text = "You Lose!"
+                }
+                self.tieGameLabel.isHidden = false
             }
         })
     }
@@ -152,6 +157,7 @@ class GameResultsViewController: UIViewController {
                 
                 self.tieGameLabel.isHidden = false
                 self.playAgainButton.isHidden = false
+                
             }
         })
         

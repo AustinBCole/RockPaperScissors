@@ -120,7 +120,7 @@ extension DeviceConnection: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        NSLog("%@", "didReceiveData: \(data)")
+        NSLog("%@", "didReceiveData: \(data) from peer: \(peerID)")
         guard let methodString = String.init(data: data, encoding: .utf8) else {return}
         let usedMethod = MechanicsController().methodChosenByOpponent(methodString: methodString)
         self.methodDelegate?.methodSelected(manager: self, method: usedMethod)
