@@ -15,6 +15,7 @@ class GamePlayViewController: UIViewController {
     private var opponentMethod: PlayerMethod?
     private var timer: Timer?
     private var remainingTime = 0
+    private let textLayer = CATextLayer()
     //MARK: IBOutlets
     @IBOutlet weak var rockCircleImageView: UIImageView!
     @IBOutlet weak var paperCircleImageView: UIImageView!
@@ -33,6 +34,7 @@ class GamePlayViewController: UIViewController {
         paperCircleImageView.isHidden = true
         rockCircleImageView.isHidden = true
         self.modalPresentationStyle = .currentContext
+        timeLabel.isHidden = true
         
         
         
@@ -62,12 +64,14 @@ class GamePlayViewController: UIViewController {
         playerMethod = PlayerMethod.scissors
         updateImageViews(method: .scissors)
     }
-    @objc private func updateTimeLabel() {
+    @objc private func updateTextLayer() {
         remainingTime -= 1
-        if remainingTime < 4 && remainingTime > 1 {
-            timeLabel.textColor = .red
+        if remainingTime < 4 && remainingTime >= 0 {
+            textLayer.foregroundColor = UIColor.red.cgColor
+            animateText(textLayer: textLayer)
+            
         }
-        if remainingTime <= 2 {
+        if remainingTime <= 3 {
             deviceConnection?.send(method: playerMethod!)
         }
         if remainingTime <= 0 {
@@ -75,13 +79,13 @@ class GamePlayViewController: UIViewController {
             timer = nil
             performSegue(withIdentifier: "GameResultsSegue", sender: self)
         }
-        timeLabel.text = "\(remainingTime)"
+        textLayer.string = "\(remainingTime)"
     }
     
     private func configureTimer() {
-        timeLabel.text = "10"
+        textLayer.string = "10"
         remainingTime = 10
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GamePlayViewController.updateTimeLabel), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GamePlayViewController.updateTextLayer), userInfo: nil, repeats: true)
     }
     private func addGestureRecognizers() {
         rockCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rockMethodWasSelected)))
@@ -127,6 +131,7 @@ class GamePlayViewController: UIViewController {
         rockCircleImageView.isHidden = false
         paperCircleImageView.isHidden = false
         scissorsCircleImageView.isHidden = false
+        configureTextLayer(textLayer: textLayer)
         configureTimer()
         addGestureRecognizers()
     }
