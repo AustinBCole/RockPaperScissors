@@ -37,17 +37,8 @@ class GamePlayViewController: UIViewController {
        startRoundButton.isHidden = false
         deviceConnection?.methodDelegate = self
         deviceConnection?.isReadyDelegate = self
-        
-        scissorsCircleImageView.isHidden = true
-        scissorsCircleImageView.image = UIImage(named: "scissors")
-        
-        paperCircleImageView.isHidden = true
-        paperCircleImageView.image = UIImage(named: "paper")
-        
-        rockCircleImageView.isHidden = true
-        rockCircleImageView.image = UIImage(named: "rock")
-        
-        self.modalPresentationStyle = .currentContext
+        configureImageViews()
+//        self.modalPresentationStyle = .currentContext
         timeLabel.isHidden = true
         textLayer.isHidden = true
     }
@@ -87,6 +78,7 @@ class GamePlayViewController: UIViewController {
             timer = nil
             performSegue(withIdentifier: "GameResultsSegue", sender: self)
         }
+        animateText(textLayer: textLayer)
         textLayer.string = "\(remainingTime)"
     }
     
@@ -100,6 +92,16 @@ class GamePlayViewController: UIViewController {
         rockCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rockMethodWasSelected)))
         paperCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(paperMethodWasSelected)))
         scissorsCircleImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scissorsMethodWasSelected)))
+    }
+    private func configureImageViews() {
+        scissorsCircleImageView.isHidden = true
+        scissorsCircleImageView.image = UIImage(named: "scissors")
+        
+        paperCircleImageView.isHidden = true
+        paperCircleImageView.image = UIImage(named: "paper")
+        
+        rockCircleImageView.isHidden = true
+        rockCircleImageView.image = UIImage(named: "rock")
     }
     private func updateImageViews(method: PlayerMethod) {
         switch method {

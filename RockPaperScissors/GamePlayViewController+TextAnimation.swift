@@ -23,7 +23,7 @@ extension GamePlayViewController {
         textLayer.add(fontSizeAnimation, forKey: nil)
     }
     func configureTextLayer(textLayer: CATextLayer) {
-        textLayer.fontSize = 60
+        textLayer.fontSize = 84
         textLayer.frame = timeLabel.frame
         textLayer.alignmentMode = .center
         textLayer.foregroundColor = UIColor.black.cgColor
