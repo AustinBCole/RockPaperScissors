@@ -51,17 +51,14 @@ class GamePlayViewController: UIViewController {
     
     //MARK: Private Methods
     @objc private func rockMethodWasSelected() {
-        print("rockMethodSent")
         playerMethod = PlayerMethod.rock
         updateImageViews(method: .rock)
     }
     @objc private func paperMethodWasSelected() {
-        print("paperMethodSent")
         playerMethod = PlayerMethod.paper
         updateImageViews(method: .paper)
     }
     @objc private func scissorsMethodWasSelected() {
-        print("scissorsMethodSent")
         playerMethod = PlayerMethod.scissors
         updateImageViews(method: .scissors)
     }
