@@ -81,6 +81,8 @@ class GameResultsViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func playAgainButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true) {
+        }
     }
     
     
@@ -177,11 +179,6 @@ class GameResultsViewController: UIViewController {
         })
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationVC = segue.destination as? GamePlayViewController else { return }
-        
-        destinationVC.deviceConnection = deviceConnection
-    }
+
     
 }

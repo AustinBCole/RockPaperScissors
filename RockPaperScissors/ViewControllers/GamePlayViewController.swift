@@ -28,13 +28,6 @@ class GamePlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deviceConnection?.methodDelegate = self
-        deviceConnection?.isReadyDelegate = self
-        scissorsCircleImageView.isHidden = true
-        paperCircleImageView.isHidden = true
-        rockCircleImageView.isHidden = true
-        self.modalPresentationStyle = .currentContext
-        timeLabel.isHidden = true
         
         
         
@@ -42,6 +35,21 @@ class GamePlayViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
        startRoundButton.isHidden = false
+        deviceConnection?.methodDelegate = self
+        deviceConnection?.isReadyDelegate = self
+        
+        scissorsCircleImageView.isHidden = true
+        scissorsCircleImageView.image = UIImage(named: "scissors")
+        
+        paperCircleImageView.isHidden = true
+        paperCircleImageView.image = UIImage(named: "paper")
+        
+        rockCircleImageView.isHidden = true
+        rockCircleImageView.image = UIImage(named: "rock")
+        
+        self.modalPresentationStyle = .currentContext
+        timeLabel.isHidden = true
+        textLayer.isHidden = true
     }
     
     
@@ -84,6 +92,7 @@ class GamePlayViewController: UIViewController {
     
     private func configureTimer() {
         textLayer.string = "10"
+        textLayer.isHidden = false
         remainingTime = 10
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GamePlayViewController.updateTextLayer), userInfo: nil, repeats: true)
     }

@@ -200,7 +200,7 @@
                                 <rect key="frame" x="152" y="483.5" width="71" height="30"/>
                                 <state key="normal" title="Play Again"/>
                                 <connections>
-                                    <segue destination="vsN-Mw-fu6" kind="showDetail" id="P7o-jc-Nu2"/>
+                                    <action selector="playAgainButtonTapped:" destination="b3U-Pd-qPU" eventType="touchUpInside" id="DRR-2e-x9L"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -278,7 +278,4 @@
         <image name="rock" width="400" height="400"/>
         <image name="scissors" width="400" height="400"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="P7o-jc-Nu2"/>
-    </inferredMetricsTieBreakers>
 </document>
