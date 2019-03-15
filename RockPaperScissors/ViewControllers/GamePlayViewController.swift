@@ -95,8 +95,8 @@ class GamePlayViewController: UIViewController {
     private func updateImageViews(method: PlayerMethod) {
         switch method {
         case .rock:
-            if rockCircleImageView.image != UIImage(named:"circle") {
-            rockCircleImageView.image = UIImage(named: "circle")
+            if rockCircleImageView.image != UIImage(named:"circle_fixed") {
+            rockCircleImageView.image = UIImage(named: "circle_fixed")
             }
             if paperCircleImageView.image != UIImage(named:"paper") {
             paperCircleImageView.image = UIImage(named: "paper")
@@ -108,8 +108,8 @@ class GamePlayViewController: UIViewController {
             if rockCircleImageView.image != UIImage(named:"rock") {
             rockCircleImageView.image = UIImage(named: "rock")
             }
-            if paperCircleImageView.image != UIImage(named:"circle") {
-            paperCircleImageView.image = UIImage(named: "circle")
+            if paperCircleImageView.image != UIImage(named:"circle_fixed") {
+            paperCircleImageView.image = UIImage(named: "circle_fixed")
             }
             if scissorsCircleImageView.image != UIImage(named:"scissors") {
             scissorsCircleImageView.image = UIImage(named: "scissors")
@@ -121,8 +121,8 @@ class GamePlayViewController: UIViewController {
             if paperCircleImageView.image != UIImage(named:"paper") {
             paperCircleImageView.image = UIImage(named: "paper")
             }
-            if scissorsCircleImageView.image != UIImage(named:"circle") {
-            scissorsCircleImageView.image = UIImage(named: "circle")
+            if scissorsCircleImageView.image != UIImage(named:"circle_fixed") {
+            scissorsCircleImageView.image = UIImage(named: "circle_fixed")
             }
         }
     }
