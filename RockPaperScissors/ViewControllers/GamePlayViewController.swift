@@ -16,6 +16,7 @@ class GamePlayViewController: UIViewController {
     private var timer: Timer?
     private var remainingTime = 0
     private let textLayer = CATextLayer()
+
     //MARK: IBOutlets
     @IBOutlet weak var rockCircleImageView: UIImageView!
     @IBOutlet weak var paperCircleImageView: UIImageView!
@@ -25,6 +26,8 @@ class GamePlayViewController: UIViewController {
     
     //MARK: Other Properties
     var deviceConnection: DeviceConnection?
+    var loadingView: IndeterminateLoadingView?
+    var isSubviewOfSuperview = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,7 @@ class GamePlayViewController: UIViewController {
     @IBAction func startRoundButtonTapped(_ sender: Any) {
         deviceConnection?.send(isReady: true)
         startRound()
+//        animateLoadingView()
     }
     
     //MARK: Private Methods
@@ -71,7 +75,7 @@ class GamePlayViewController: UIViewController {
             
         }
         if remainingTime <= 3 {
-            deviceConnection?.send(method: playerMethod!)
+            deviceConnection?.send(method: playerMethod ?? PlayerMethod.paper)
         }
         if remainingTime <= 0 {
             timer?.invalidate()
@@ -165,10 +169,5 @@ extension GamePlayViewController: DeviceMethodDelegate {
 }
 extension GamePlayViewController: DeviceIsReadyDelegate {
     func opponentIsReady(manager: DeviceConnection, isReady: Bool) {
-        OperationQueue.main.addOperation {
-        if isReady == true {
-        self.startRound()
-            }
-        }
     }
 }
