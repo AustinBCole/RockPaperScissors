@@ -130,8 +130,10 @@ class GameResultsViewController: UIViewController {
                 
                 if UIImage(named: (self.playerMethod?.rawValue)!) == self.winningImageView.image {
                     self.tieGameLabel.text = "You Win!"
+                    self.audioPlayer?.play(url: Bundle.main.url(forResource: "cheering", withExtension: "wav"))
                 } else {
                     self.tieGameLabel.text = "You Lose!"
+                    self.audioPlayer?.play(url: Bundle.main.url(forResource: "booing", withExtension: "mp3"))
                 }
                 self.tieGameLabel.isHidden = false
             }

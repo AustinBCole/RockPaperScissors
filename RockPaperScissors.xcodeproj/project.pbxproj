@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A20207CC223BFDAB00D58F27 /* TKO.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A20207CB223BFDAB00D58F27 /* TKO.mp3 */; };
 		A20207CE223BFDF200D58F27 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20207CD223BFDF200D58F27 /* AudioPlayer.swift */; };
+		A20207D0223C00EA00D58F27 /* booing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A20207CF223C00EA00D58F27 /* booing.mp3 */; };
+		A20207D2223C00FB00D58F27 /* cheering.wav in Resources */ = {isa = PBXBuildFile; fileRef = A20207D1223C00FA00D58F27 /* cheering.wav */; };
 		A237AD0E223AE28500EC6D83 /* UIView+BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A237AD0D223AE28500EC6D83 /* UIView+BackgroundImage.swift */; };
 		A2FD3E1E223843DB00A2AED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD3E1D223843DB00A2AED7 /* AppDelegate.swift */; };
 		A2FD3E23223843DB00A2AED7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FD3E21223843DB00A2AED7 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		A20207CB223BFDAB00D58F27 /* TKO.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = TKO.mp3; path = ../../../../../Downloads/TKO.mp3; sourceTree = "<group>"; };
 		A20207CD223BFDF200D58F27 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		A20207CF223C00EA00D58F27 /* booing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = booing.mp3; path = ../../../booing.mp3; sourceTree = "<group>"; };
+		A20207D1223C00FA00D58F27 /* cheering.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cheering.wav; path = ../../../cheering.wav; sourceTree = "<group>"; };
 		A237AD0D223AE28500EC6D83 /* UIView+BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BackgroundImage.swift"; sourceTree = "<group>"; };
 		A2FD3E1A223843DB00A2AED7 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FD3E1D223843DB00A2AED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				A2FD3E21223843DB00A2AED7 /* Main.storyboard */,
 				A2FD3E24223843DB00A2AED7 /* Assets.xcassets */,
 				A20207CB223BFDAB00D58F27 /* TKO.mp3 */,
+				A20207D1223C00FA00D58F27 /* cheering.wav */,
+				A20207CF223C00EA00D58F27 /* booing.mp3 */,
 				A2FD3E26223843DB00A2AED7 /* LaunchScreen.storyboard */,
 				A2FD3E29223843DB00A2AED7 /* Info.plist */,
 			);
@@ -195,8 +201,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A20207D0223C00EA00D58F27 /* booing.mp3 in Resources */,
 				A2FD3E28223843DB00A2AED7 /* LaunchScreen.storyboard in Resources */,
 				A2FD3E25223843DB00A2AED7 /* Assets.xcassets in Resources */,
+				A20207D2223C00FB00D58F27 /* cheering.wav in Resources */,
 				A2FD3E23223843DB00A2AED7 /* Main.storyboard in Resources */,
 				A20207CC223BFDAB00D58F27 /* TKO.mp3 in Resources */,
 			);
