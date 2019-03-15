@@ -10,6 +10,9 @@ import UIKit
 import SpriteKit
 
 class GameResultsViewController: UIViewController {
+    //MARK: Private Properties
+    private var audioPlayer: AudioPlayer?
+    
     //MARK: Other Properties
     var playerMethod: PlayerMethod?
     var opponentMethod: PlayerMethod?
@@ -34,10 +37,12 @@ class GameResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addBackground()
+        audioPlayer = AudioPlayer()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        audioPlayer?.play()
         
         tieGameLabel.isHidden = true
         losingImageViewTwo.isHidden = true
