@@ -69,7 +69,6 @@ class GamePlayViewController: UIViewController {
         remainingTime -= 1
         if remainingTime < 4 && remainingTime > 1 {
             timeLabel.textColor = .red
-            timeLabel.animateText()
         }
         if remainingTime <= 2 {
             deviceConnection?.send(method: playerMethod!)

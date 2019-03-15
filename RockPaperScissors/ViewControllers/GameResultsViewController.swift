@@ -131,7 +131,7 @@ class GameResultsViewController: UIViewController {
                 if UIImage(named: (self.playerMethod?.rawValue)!) == self.winningImageView.image {
                     self.tieGameLabel.text = "You Win!"
                     self.audioPlayer?.play(url: Bundle.main.url(forResource: "cheering", withExtension: "wav"))
-                } else {
+                } else if UIImage(named: (self.playerMethod?.rawValue)!) == self.losingImageView.image {
                     self.tieGameLabel.text = "You Lose!"
                     self.audioPlayer?.play(url: Bundle.main.url(forResource: "booing", withExtension: "mp3"))
                 }
@@ -168,9 +168,10 @@ class GameResultsViewController: UIViewController {
                 self.losingImageViewThree.isHidden = false
                 self.winningImageViewTwo.isHidden = true
                 self.losingImageViewTwo.isHidden = true
-                
                 self.tieGameLabel.isHidden = false
                 self.playAgainButton.isHidden = false
+                
+                self.audioPlayer?.play(url: Bundle.main.url(forResource: "disappointed", withExtension: "mp3"))
                 
             }
         })
