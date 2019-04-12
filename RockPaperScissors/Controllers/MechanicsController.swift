@@ -33,7 +33,7 @@ class MechanicsController {
                 return (winningMethod: playerMethod, losingMethod: opponentMethod, tie: false)
             } else if opponentMethod == .paper {
                 return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: false)
-            } else if opponentMethod == .paper {
+            } else if opponentMethod == .rock {
                 return (winningMethod: opponentMethod, losingMethod: playerMethod, tie: true)
             }
         case .paper:
