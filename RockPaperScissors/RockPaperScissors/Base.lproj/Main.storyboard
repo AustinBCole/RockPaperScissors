@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,13 +36,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQc-9R-IMG">
-                                <rect key="frame" x="130" y="117" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -53,7 +46,6 @@
                     </view>
                     <connections>
                         <outlet property="connectButton" destination="GMN-Jo-XNO" id="s4E-af-PiD"/>
-                        <outlet property="connectedDevicesLabel" destination="cQc-9R-IMG" id="NnT-wQ-aVh"/>
                         <outlet property="newGameButton" destination="tRb-BS-kYm" id="eyj-bL-O8I"/>
                     </connections>
                 </viewController>
@@ -187,9 +179,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie Game!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkO-8x-1Ut">
-                                <rect key="frame" x="-12.5" y="403.5" width="400" height="60"/>
+                                <rect key="frame" x="0.0" y="403.5" width="375" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="plr-6T-yG4"/>
                                     <constraint firstAttribute="height" constant="60" id="sRK-mY-7Cb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -210,6 +201,7 @@
                             <constraint firstItem="Vfk-pI-5aa" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" constant="100" id="4h9-z3-jDZ"/>
                             <constraint firstItem="Mf1-tD-ziy" firstAttribute="centerX" secondItem="A2a-f1-WcF" secondAttribute="centerX" id="5Cq-mI-NL2"/>
                             <constraint firstItem="0LB-ck-zs3" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" constant="-100" id="APj-LB-oHe"/>
+                            <constraint firstItem="VP2-4b-wyh" firstAttribute="trailing" secondItem="UkO-8x-1Ut" secondAttribute="trailing" id="CqK-Ra-xWf"/>
                             <constraint firstItem="WPi-3Z-c4r" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" id="IrG-K2-tzi"/>
                             <constraint firstItem="VP2-4b-wyh" firstAttribute="trailing" secondItem="xvf-ja-DU7" secondAttribute="trailing" constant="92" id="K7i-WX-JlC"/>
                             <constraint firstItem="xvf-ja-DU7" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" constant="-73" id="Mie-UW-iLF"/>
@@ -223,6 +215,7 @@
                             <constraint firstItem="Vfk-pI-5aa" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" constant="-73" id="egm-vX-2W7"/>
                             <constraint firstItem="WPi-3Z-c4r" firstAttribute="centerY" secondItem="A2a-f1-WcF" secondAttribute="centerY" id="peW-ph-mBy"/>
                             <constraint firstItem="VP2-4b-wyh" firstAttribute="trailing" secondItem="gop-E9-CN8" secondAttribute="trailing" constant="-100" id="qVn-ji-yo4"/>
+                            <constraint firstItem="UkO-8x-1Ut" firstAttribute="leading" secondItem="VP2-4b-wyh" secondAttribute="leading" id="rDO-fc-Tnz"/>
                             <constraint firstItem="UkO-8x-1Ut" firstAttribute="centerX" secondItem="A2a-f1-WcF" secondAttribute="centerX" id="sK6-Q3-w3E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VP2-4b-wyh"/>
@@ -242,35 +235,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EX-A2-PAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2262" y="26"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="i0N-A6-hPk">
-            <objects>
-                <viewController id="Bde-K5-Zoj" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Diz-Zv-e33">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="0" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="doS-eY-V19">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="84"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="doS-eY-V19" firstAttribute="trailing" secondItem="ziV-bf-8E1" secondAttribute="trailing" id="OWp-5X-HzO"/>
-                            <constraint firstItem="doS-eY-V19" firstAttribute="top" secondItem="ziV-bf-8E1" secondAttribute="top" id="Ozf-N4-3mj"/>
-                            <constraint firstItem="doS-eY-V19" firstAttribute="leading" secondItem="ziV-bf-8E1" secondAttribute="leading" id="RKI-oQ-Fes"/>
-                            <constraint firstItem="ziV-bf-8E1" firstAttribute="bottom" secondItem="doS-eY-V19" secondAttribute="bottom" id="dT9-6j-Sdb"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ziV-bf-8E1"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6HL-aA-dB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3426" y="94"/>
         </scene>
     </scenes>
     <resources>

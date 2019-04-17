@@ -54,9 +54,7 @@ class GameResultsViewController: UIViewController {
         
         let randomMethodArray: Array<PlayerMethod> = [.rock, .paper, .scissors]
         
-        guard let gameResults = MechanicsController.resolveGame(playerMethod: playerMethod ?? PlayerMethod.rock, opponentMethod: opponentMethod ?? randomMethodArray[Int.random(in: 0 ..< 3)]) else {
-            return
-        }
+        let gameResults = MechanicsController.resolveGame(playerMethod: playerMethod ?? PlayerMethod.rock, opponentMethod: opponentMethod ?? randomMethodArray[Int.random(in: 0 ..< 3)])
         
         winningImageView.image = UIImage(named: gameResults.winningMethod.rawValue)
         winningImageViewTwo.image = UIImage(named: gameResults.winningMethod.rawValue)
