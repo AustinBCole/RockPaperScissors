@@ -106,8 +106,8 @@ class GameResultsViewController: UIViewController {
         UIView.animateKeyframes(withDuration: 1.0, delay: animationDuration + 2.0, options: .calculationModeLinear, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
                 
-                self.winningImageViewTwo.frame.origin.x = (self.winningImageViewTwo?.frame.origin.x)! + position
-                self.losingImageViewTwo.frame.origin.x = self.losingImageViewTwo.frame.origin.x - 92
+                self.winningImageViewTwo.frame.origin.x = (self.winningImageViewThree?.frame.origin.x)!
+                self.losingImageViewTwo.frame.origin.x = self.losingImageViewThree.frame.origin.x
             })
         }, completion: { completed in
             if completed {
@@ -122,8 +122,8 @@ class GameResultsViewController: UIViewController {
         UIView.animateKeyframes(withDuration: 1.0, delay: animationDuration + 3.0, options: .calculationModeLinear, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
                 
-                self.losingImageViewThree.frame.origin.x = self.losingImageViewTwo.frame.origin.x + 200
-                self.losingImageViewThree.frame.origin.y = self.losingImageViewThree.frame.origin.y - 300
+                self.losingImageViewThree.frame.origin.x = self.losingImageViewTwo.frame.origin.x + 500
+                self.losingImageViewThree.frame.origin.y = self.losingImageViewThree.frame.origin.y - 750
             })
         }, completion: { completed in
             if completed {
