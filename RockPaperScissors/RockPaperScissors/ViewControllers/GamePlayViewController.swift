@@ -44,6 +44,15 @@ class GamePlayViewController: UIViewController {
 //        self.modalPresentationStyle = .currentContext
         timeLabel.isHidden = true
         textLayer.isHidden = true
+        
+        paperCircleImageView.isUserInteractionEnabled = true
+        paperCircleImageView.alpha = 1.0
+        
+        rockCircleImageView.isUserInteractionEnabled = true
+        rockCircleImageView.alpha = 1.0
+        
+        scissorsCircleImageView.isUserInteractionEnabled = true
+        scissorsCircleImageView.alpha = 1.0
     }
     
     
@@ -69,13 +78,19 @@ class GamePlayViewController: UIViewController {
     }
     @objc private func updateTextLayer() {
         remainingTime -= 1
+        if remainingTime >= 4 {
+            deviceConnection?.send(method: playerMethod ?? PlayerMethod.paper)
+        }
         if remainingTime < 4 && remainingTime >= 0 {
             textLayer.foregroundColor = UIColor.red.cgColor
             animateText(textLayer: textLayer)
             
-        }
-        if remainingTime <= 3 {
-            deviceConnection?.send(method: playerMethod ?? PlayerMethod.paper)
+            paperCircleImageView.isUserInteractionEnabled = false
+            paperCircleImageView.alpha = 0.5
+            rockCircleImageView.isUserInteractionEnabled = false
+            rockCircleImageView.alpha = 0.5
+            scissorsCircleImageView.isUserInteractionEnabled = false
+            scissorsCircleImageView.alpha = 0.5
         }
         if remainingTime <= 0 {
             timer?.invalidate()
