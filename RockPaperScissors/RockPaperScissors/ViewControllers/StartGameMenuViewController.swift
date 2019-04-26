@@ -11,7 +11,6 @@ import UIKit
 class StartGameMenuViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var connectButton: UIButton!
-    @IBOutlet weak var connectedDevicesLabel: UILabel!
     
     let deviceConnection = DeviceConnection()
     
@@ -26,21 +25,31 @@ class StartGameMenuViewController: UIViewController {
         deviceConnection.startBrowsing()
         connectButton.setTitle("Connecting...", for: .normal)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! GamePlayViewController
+        destinationVC.deviceConnection = self.deviceConnection
+    }
 }
+
+
 
 extension StartGameMenuViewController: DeviceConnectionDelegate {
     func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String]) {
         OperationQueue.main.addOperation {
             self.newGameButton.isHidden = false
             self.connectButton.setTitle("Connected!", for: .normal)
-            self.connectedDevicesLabel.text = "1"
         }
         deviceConnection.stopBrowsing()
         deviceConnection.stopAdvertising()
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                guard let destinationVC = segue.destination as? GamePlayViewController else { return }
-            
-        destinationVC.deviceConnection = deviceConnection
+}
+extension StartGameMenuViewController: DeviceIsReadyDelegate {
+    func opponentIsReady(manager: DeviceConnection, isReady: Bool) {
+        if isReady == true {
+            let destinationVC = GamePlayViewController()
+            destinationVC.deviceConnection = self.deviceConnection
+            present(destinationVC, animated: true, completion: nil)
         }
+    }
 }

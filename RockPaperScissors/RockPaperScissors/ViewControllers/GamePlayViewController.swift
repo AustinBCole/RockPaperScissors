@@ -169,5 +169,8 @@ extension GamePlayViewController: DeviceMethodDelegate {
 }
 extension GamePlayViewController: DeviceIsReadyDelegate {
     func opponentIsReady(manager: DeviceConnection, isReady: Bool) {
+        OperationQueue.main.addOperation {
+            self.startRound()
+        }
     }
 }
