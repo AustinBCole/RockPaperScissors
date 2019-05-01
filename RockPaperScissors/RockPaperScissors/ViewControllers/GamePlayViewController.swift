@@ -15,6 +15,7 @@ class GamePlayViewController: UIViewController {
     private var opponentMethod: PlayerMethod?
     private var timer: Timer?
     private var remainingTime = 0
+    private var isFirstRound = true
     private let textLayer = CATextLayer()
     
     //MARK: IBOutlets
@@ -29,16 +30,15 @@ class GamePlayViewController: UIViewController {
     var deviceConnection: DeviceConnection?
     var loadingView: IndeterminateLoadingView?
     var isSubviewOfSuperview = false
-    var isHost = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceConnection?.methodDelegate = self
-        deviceConnection?.isReadyDelegate = self
         deviceConnection?.deviceDelegate = self
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        deviceConnection?.isReadyDelegate = self
         startRoundButton.isHidden = false
         configureImageViews()
         
@@ -58,9 +58,10 @@ class GamePlayViewController: UIViewController {
         scissorsCircleImageView.isUserInteractionEnabled = true
         scissorsCircleImageView.alpha = 1.0
         
-        
+        if NewGameController.shared.isFirstRound || !NewGameController.shared.isHost {
         startRoundButton.isUserInteractionEnabled = false
         startRoundButton.alpha = 0.5
+        }
     }
     
     
@@ -68,7 +69,7 @@ class GamePlayViewController: UIViewController {
         deviceConnection?.send(isReady: true)
         startRound()
         deviceConnection?.stopAdvertising()
-        //        animateLoadingView()
+        NewGameController.shared.isFirstRound = false
     }
     
     //MARK: Private Methods
@@ -188,20 +189,18 @@ extension GamePlayViewController: DeviceConnectionDelegate {
     func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String]) {
         if connectedDevices.count == 0 {
             //If there is only one player left in the session, that player becomes the host.
-            self.isHost = true
+            NewGameController.shared.isHost = true
             self.deviceConnection?.startAdvertising()
             OperationQueue.main.addOperation {
                 self.connectionLabel.text = "Connections:"
-                if self.isHost {
-                    self.startRoundButton.isUserInteractionEnabled = false
-                    self.startRoundButton.alpha = 0.5
-                }
+                self.startRoundButton.isUserInteractionEnabled = false
+                self.startRoundButton.alpha = 0.5
             }
         } else {
             OperationQueue.main.addOperation {
                 self.deviceConnection?.stopAdvertising()
                 self.connectionLabel.text = "Connections: \(connectedDevices)"
-                if self.isHost {
+                if NewGameController.shared.isHost {
                     self.startRoundButton.isUserInteractionEnabled = true
                     self.startRoundButton.alpha = 1.0
                 }

@@ -44,6 +44,8 @@ class GameResultsViewController: UIViewController {
         super.viewWillAppear(animated)
         audioPlayer?.play()
         
+        deviceConnection?.isReadyDelegate = self
+        
         tieGameLabel.isHidden = true
         losingImageViewTwo.isHidden = true
         losingImageViewThree.isHidden = true
@@ -81,6 +83,7 @@ class GameResultsViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func playAgainButtonTapped(_ sender: Any) {
+        deviceConnection?.send(isReady: true)
         //I don't need to make isHost persistent through the app because I am using `self.dismiss` here
         self.dismiss(animated: true) {
         }
@@ -181,6 +184,19 @@ class GameResultsViewController: UIViewController {
         })
         
     }
+    
+    
+}
 
+extension GameResultsViewController: DeviceIsReadyDelegate {
+    func opponentIsReady(manager: DeviceConnection, isReady: Bool) {
+        OperationQueue.main.addOperation {
+            if isReady {
+                self.dismiss(animated: true) {
+                }
+            }
+        }
+    }
+    
     
 }

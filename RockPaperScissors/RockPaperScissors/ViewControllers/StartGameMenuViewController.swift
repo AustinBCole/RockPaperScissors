@@ -9,10 +9,12 @@
 import UIKit
 
 class StartGameMenuViewController: UIViewController {
+    //MARK: IBOutlets
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var joinGameButton: UIButton!
     
-    let deviceConnection = DeviceConnection()
+    //MARK: Private Properties
+    private let deviceConnection = DeviceConnection()
     
     
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class StartGameMenuViewController: UIViewController {
         let destinationVC = segue.destination as! GamePlayViewController
         destinationVC.deviceConnection = self.deviceConnection
         if segue.identifier == "HostGameSegue" {
-        destinationVC.isHost = true
+        NewGameController.shared.isHost = true
         }
     }
 }
