@@ -15,6 +15,10 @@ enum NewOrJoinedGame {
 }
 
 class NewGameController {
+    static let shared = NewGameController()
+    
+    var isHost = false
+    var isFirstRound = true
     
     func newOrJoinedGame(method: NewOrJoinedGame) {
         switch method {
