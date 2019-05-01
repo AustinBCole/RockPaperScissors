@@ -39,9 +39,6 @@ class GamePlayViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         startRoundButton.isHidden = false
-        
-        deviceConnection?.methodDelegate = self
-        deviceConnection?.isReadyDelegate = self
         configureImageViews()
         
         timeLabel.isHidden = true
@@ -187,10 +184,18 @@ class GamePlayViewController: UIViewController {
 }
 extension GamePlayViewController: DeviceConnectionDelegate {
     func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String]) {
-        OperationQueue.main.addOperation {
-            self.connectionLabel.text = "Connections: \(connectedDevices)"
-            self.startRoundButton.isUserInteractionEnabled = true
-            self.startRoundButton.alpha = 1.0
+        if connectedDevices.count == 0 {
+            OperationQueue.main.addOperation {
+                self.connectionLabel.text = "Connections:"
+                self.startRoundButton.isUserInteractionEnabled = false
+                self.startRoundButton.alpha = 0.5
+            }
+        } else {
+            OperationQueue.main.addOperation {
+                self.connectionLabel.text = "Connections: \(connectedDevices)"
+                self.startRoundButton.isUserInteractionEnabled = true
+                self.startRoundButton.alpha = 1.0
+            }
         }
     }
 }
