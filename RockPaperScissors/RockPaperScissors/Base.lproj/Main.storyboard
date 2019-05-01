@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="nMg-82-PsZ">
-                                <rect key="frame" x="168.5" y="398" width="77" height="100"/>
+                                <rect key="frame" x="162.5" y="363" width="89" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-BS-kYm">
-                                        <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="89" height="30"/>
                                         <state key="normal" title="Host Game"/>
                                         <connections>
                                             <action selector="hostGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RvG-v5-3VP"/>
@@ -29,10 +29,18 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMN-Jo-XNO">
-                                        <rect key="frame" x="0.0" y="70" width="77" height="30"/>
+                                        <rect key="frame" x="0.0" y="70" width="89" height="30"/>
                                         <state key="normal" title="Join Game"/>
                                         <connections>
                                             <action selector="joinGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NAU-4b-XCd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWG-Ri-1l5">
+                                        <rect key="frame" x="0.0" y="140" width="89" height="30"/>
+                                        <state key="normal" title="Single Player"/>
+                                        <connections>
+                                            <action selector="singlePlayerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kki-Q3-K5K"/>
+                                            <segue destination="vsN-Mw-fu6" kind="presentation" identifier="SinglePlayerSegue" id="IJM-qt-1Gn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -255,6 +263,6 @@
         <image name="scissors" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oCE-Cp-JBc"/>
+        <segue reference="IJM-qt-1Gn"/>
     </inferredMetricsTieBreakers>
 </document>

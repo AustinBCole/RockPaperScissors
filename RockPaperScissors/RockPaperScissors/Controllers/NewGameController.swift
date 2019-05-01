@@ -19,6 +19,7 @@ class NewGameController {
     
     var isHost = false
     var isFirstRound = true
+    var isSinglePlayer = false
     
     func newOrJoinedGame(method: NewOrJoinedGame) {
         switch method {

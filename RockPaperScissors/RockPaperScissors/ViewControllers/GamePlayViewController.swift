@@ -58,7 +58,7 @@ class GamePlayViewController: UIViewController {
         scissorsCircleImageView.isUserInteractionEnabled = true
         scissorsCircleImageView.alpha = 1.0
         
-        if NewGameController.shared.isFirstRound || !NewGameController.shared.isHost {
+        if (NewGameController.shared.isFirstRound && !NewGameController.shared.isSinglePlayer) || (!NewGameController.shared.isHost && !NewGameController.shared.isSinglePlayer) {
         startRoundButton.isUserInteractionEnabled = false
         startRoundButton.alpha = 0.5
         }

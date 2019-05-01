@@ -29,6 +29,10 @@ class StartGameMenuViewController: UIViewController {
         deviceConnection.startBrowsing()
         joinGameButton.setTitle("Connecting...", for: .normal)
     }
+    @IBAction func singlePlayerButton(_ sender: Any) {
+        NewGameController.shared.isSinglePlayer = true
+        NewGameController.shared.isHost = true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
