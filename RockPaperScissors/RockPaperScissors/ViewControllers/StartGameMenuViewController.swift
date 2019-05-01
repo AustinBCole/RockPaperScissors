@@ -32,6 +32,9 @@ class StartGameMenuViewController: UIViewController {
         
         let destinationVC = segue.destination as! GamePlayViewController
         destinationVC.deviceConnection = self.deviceConnection
+        if segue.identifier == "HostGameSegue" {
+        destinationVC.isHost = true
+        }
     }
 }
 
