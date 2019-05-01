@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="StartGameMenuViewController" customModule="RockPaperScissors" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="nMg-82-PsZ">
-                                <rect key="frame" x="121.5" y="234" width="77" height="100"/>
+                                <rect key="frame" x="168.5" y="398" width="77" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-BS-kYm">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
@@ -60,20 +60,20 @@
             <objects>
                 <viewController id="vsN-Mw-fu6" customClass="GamePlayViewController" customModule="RockPaperScissors" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T8N-Qy-mtz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zt1-vq-ia8">
-                                <rect key="frame" x="20" y="448" width="280" height="100"/>
+                                <rect key="frame" x="20" y="742" width="374" height="100"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock" translatesAutoresizingMaskIntoConstraints="NO" id="AYM-5e-KyM">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="100"/>
                                     </imageView>
                                     <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper" translatesAutoresizingMaskIntoConstraints="NO" id="srO-YB-tty">
-                                        <rect key="frame" x="100" y="0.0" width="80" height="100"/>
+                                        <rect key="frame" x="131.5" y="0.0" width="111" height="100"/>
                                     </imageView>
                                     <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scissors" translatesAutoresizingMaskIntoConstraints="NO" id="g7A-Sb-vV4">
-                                        <rect key="frame" x="200" y="0.0" width="80" height="100"/>
+                                        <rect key="frame" x="262.5" y="0.0" width="111.5" height="100"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -81,7 +81,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXs-Dx-Fpe">
-                                <rect key="frame" x="20" y="185" width="280" height="314"/>
+                                <rect key="frame" x="20" y="209" width="374" height="314"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="314" id="XBi-6r-xVh"/>
                                 </constraints>
@@ -90,14 +90,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcs-eL-5I5">
-                                <rect key="frame" x="119" y="507" width="82" height="30"/>
+                                <rect key="frame" x="166" y="531" width="82" height="30"/>
                                 <state key="normal" title="Start Round"/>
                                 <connections>
                                     <action selector="startRoundButtonTapped:" destination="vsN-Mw-fu6" eventType="touchUpInside" id="qvG-xG-dHm"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connections:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMd-GY-8qB">
-                                <rect key="frame" x="20" y="28" width="280" height="20.5"/>
+                                <rect key="frame" x="20" y="52" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -138,60 +138,60 @@
             <objects>
                 <viewController id="b3U-Pd-qPU" customClass="GameResultsViewController" customModule="RockPaperScissors" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A2a-f1-WcF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gop-E9-CN8">
-                                <rect key="frame" x="321.5" y="234" width="98.5" height="100"/>
+                                <rect key="frame" x="415.5" y="398" width="98.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98.5" id="GYC-gP-jWn"/>
                                     <constraint firstAttribute="height" constant="100" id="gkM-fD-fyB"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0LB-ck-zs3">
-                                <rect key="frame" x="-100" y="234" width="98.5" height="100"/>
+                                <rect key="frame" x="-100" y="398" width="98.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="FWr-bs-6zK"/>
                                     <constraint firstAttribute="width" constant="98.5" id="Z8F-ye-hDP"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPi-3Z-c4r">
-                                <rect key="frame" x="0.0" y="234" width="98.5" height="100"/>
+                                <rect key="frame" x="0.0" y="398" width="98.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98.5" id="IiK-UF-S7y"/>
                                     <constraint firstAttribute="height" constant="100" id="ZXF-Gs-bp5"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vfk-pI-5aa">
-                                <rect key="frame" x="69" y="161" width="98.5" height="100"/>
+                                <rect key="frame" x="116" y="325" width="98.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98.5" id="CZM-Ra-z9x"/>
                                     <constraint firstAttribute="height" constant="100" id="v4V-54-jq4"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xvf-ja-DU7">
-                                <rect key="frame" x="153" y="161" width="98.5" height="100"/>
+                                <rect key="frame" x="200" y="325" width="98.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98.5" id="ZyV-jD-NEe"/>
                                     <constraint firstAttribute="height" constant="100" id="oYz-fC-uTQ"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xbi-WA-KAO">
-                                <rect key="frame" x="221.5" y="234" width="98.5" height="100"/>
+                                <rect key="frame" x="315.5" y="398" width="98.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98.5" id="I8b-PH-ojM"/>
                                     <constraint firstAttribute="height" constant="100" id="pxT-kI-9mU"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-dt-Zcw">
-                                <rect key="frame" x="40" y="220" width="240" height="128"/>
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="EwS-9U-cPh"/>
                                     <constraint firstAttribute="width" constant="240" id="ZGx-uP-EG3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tie Game!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkO-8x-1Ut">
-                                <rect key="frame" x="0.0" y="354" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="518" width="414" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="sRK-mY-7Cb"/>
                                 </constraints>
@@ -200,7 +200,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf1-tD-ziy">
-                                <rect key="frame" x="124.5" y="434" width="71" height="30"/>
+                                <rect key="frame" x="171.5" y="598" width="71" height="30"/>
                                 <state key="normal" title="Play Again"/>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="b3U-Pd-qPU" eventType="touchUpInside" id="DRR-2e-x9L"/>
