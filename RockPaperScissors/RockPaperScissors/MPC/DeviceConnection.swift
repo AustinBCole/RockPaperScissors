@@ -11,7 +11,7 @@ import MultipeerConnectivity
 
 class DeviceConnection: NSObject {
     lazy var session: MCSession = {
-        let session = MCSession(peer: myPeerID, securityIdentity: nil, encryptionPreference: .required)
+        let session = MCSession(peer: myPeerID, securityIdentity: nil, encryptionPreference: .optional)
         session.delegate = self
         return session
     }()

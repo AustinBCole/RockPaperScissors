@@ -18,20 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="nMg-82-PsZ">
-                                <rect key="frame" x="169.5" y="398" width="75" height="100"/>
+                                <rect key="frame" x="168.5" y="398" width="77" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-BS-kYm">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
-                                        <state key="normal" title="New Game"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
+                                        <state key="normal" title="Host Game"/>
                                         <connections>
-                                            <segue destination="vsN-Mw-fu6" kind="presentation" id="fMp-uZ-drA"/>
+                                            <action selector="hostGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RvG-v5-3VP"/>
+                                            <segue destination="vsN-Mw-fu6" kind="presentation" identifier="HostGameSegue" id="fMp-uZ-drA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMN-Jo-XNO">
-                                        <rect key="frame" x="0.0" y="70" width="75" height="30"/>
-                                        <state key="normal" title="Connect"/>
+                                        <rect key="frame" x="0.0" y="70" width="77" height="30"/>
+                                        <state key="normal" title="Join Game"/>
                                         <connections>
-                                            <action selector="connectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Qg-6e-7nv"/>
+                                            <action selector="joinGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NAU-4b-XCd"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -45,8 +46,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="connectButton" destination="GMN-Jo-XNO" id="s4E-af-PiD"/>
+                        <outlet property="joinGameButton" destination="GMN-Jo-XNO" id="gGC-GF-NCk"/>
                         <outlet property="newGameButton" destination="tRb-BS-kYm" id="eyj-bL-O8I"/>
+                        <segue destination="vsN-Mw-fu6" kind="presentation" identifier="JoinGameSegue" id="oCE-Cp-JBc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -94,21 +96,31 @@
                                     <action selector="startRoundButtonTapped:" destination="vsN-Mw-fu6" eventType="touchUpInside" id="qvG-xG-dHm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connections:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMd-GY-8qB">
+                                <rect key="frame" x="20" y="52" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bjm-Ec-1r1" firstAttribute="trailing" secondItem="EMd-GY-8qB" secondAttribute="trailing" constant="20" id="B2u-aG-QfH"/>
                             <constraint firstItem="Zt1-vq-ia8" firstAttribute="leading" secondItem="bjm-Ec-1r1" secondAttribute="leading" constant="20" id="B9y-c1-DdO"/>
                             <constraint firstItem="JXs-Dx-Fpe" firstAttribute="trailing" secondItem="Zt1-vq-ia8" secondAttribute="trailing" id="Pbv-hG-J27"/>
                             <constraint firstItem="JXs-Dx-Fpe" firstAttribute="top" secondItem="bjm-Ec-1r1" secondAttribute="top" constant="165" id="Rda-8G-TKy"/>
                             <constraint firstItem="Fcs-eL-5I5" firstAttribute="top" secondItem="JXs-Dx-Fpe" secondAttribute="bottom" constant="8" symbolic="YES" id="Woq-2T-Jy4"/>
                             <constraint firstItem="JXs-Dx-Fpe" firstAttribute="leading" secondItem="Zt1-vq-ia8" secondAttribute="leading" id="Ydy-zG-KGA"/>
                             <constraint firstItem="Fcs-eL-5I5" firstAttribute="centerX" secondItem="T8N-Qy-mtz" secondAttribute="centerX" id="cDu-XZ-9bX"/>
+                            <constraint firstItem="EMd-GY-8qB" firstAttribute="leading" secondItem="bjm-Ec-1r1" secondAttribute="leading" constant="20" id="nJE-Mz-1RV"/>
+                            <constraint firstItem="EMd-GY-8qB" firstAttribute="top" secondItem="bjm-Ec-1r1" secondAttribute="top" constant="8" id="pTU-FC-HiJ"/>
                             <constraint firstItem="bjm-Ec-1r1" firstAttribute="bottom" secondItem="Zt1-vq-ia8" secondAttribute="bottom" constant="20" id="qSk-ke-Qe3"/>
                             <constraint firstItem="bjm-Ec-1r1" firstAttribute="trailing" secondItem="Zt1-vq-ia8" secondAttribute="trailing" constant="20" id="s1C-KY-c1T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bjm-Ec-1r1"/>
                     </view>
                     <connections>
+                        <outlet property="connectionLabel" destination="EMd-GY-8qB" id="eU0-Ff-DFb"/>
                         <outlet property="paperCircleImageView" destination="srO-YB-tty" id="tn7-TM-V17"/>
                         <outlet property="rockCircleImageView" destination="AYM-5e-KyM" id="GLR-2q-3r6"/>
                         <outlet property="scissorsCircleImageView" destination="g7A-Sb-vV4" id="1G7-0j-tVW"/>
@@ -242,4 +254,7 @@
         <image name="rock" width="400" height="400"/>
         <image name="scissors" width="400" height="400"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oCE-Cp-JBc"/>
+    </inferredMetricsTieBreakers>
 </document>

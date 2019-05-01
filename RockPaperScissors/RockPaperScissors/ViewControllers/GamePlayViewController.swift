@@ -16,51 +16,59 @@ class GamePlayViewController: UIViewController {
     private var timer: Timer?
     private var remainingTime = 0
     private let textLayer = CATextLayer()
-
+    
     //MARK: IBOutlets
     @IBOutlet weak var rockCircleImageView: UIImageView!
     @IBOutlet weak var paperCircleImageView: UIImageView!
     @IBOutlet weak var scissorsCircleImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startRoundButton: UIButton!
+    @IBOutlet weak var connectionLabel: UILabel!
     
     //MARK: Other Properties
     var deviceConnection: DeviceConnection?
     var loadingView: IndeterminateLoadingView?
     var isSubviewOfSuperview = false
+    var isHost = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+        deviceConnection?.methodDelegate = self
+        deviceConnection?.isReadyDelegate = self
+        deviceConnection?.deviceDelegate = self
         
     }
     override func viewWillAppear(_ animated: Bool) {
-       startRoundButton.isHidden = false
-        deviceConnection?.methodDelegate = self
-        deviceConnection?.isReadyDelegate = self
+        startRoundButton.isHidden = false
         configureImageViews()
-//        self.modalPresentationStyle = .currentContext
+        
         timeLabel.isHidden = true
+        
         textLayer.isHidden = true
+        
         
         paperCircleImageView.isUserInteractionEnabled = true
         paperCircleImageView.alpha = 1.0
         
+        
         rockCircleImageView.isUserInteractionEnabled = true
         rockCircleImageView.alpha = 1.0
         
+        
         scissorsCircleImageView.isUserInteractionEnabled = true
         scissorsCircleImageView.alpha = 1.0
+        
+        
+        startRoundButton.isUserInteractionEnabled = false
+        startRoundButton.alpha = 0.5
     }
     
     
-
     @IBAction func startRoundButtonTapped(_ sender: Any) {
         deviceConnection?.send(isReady: true)
         startRound()
-//        animateLoadingView()
+        deviceConnection?.stopAdvertising()
+        //        animateLoadingView()
     }
     
     //MARK: Private Methods
@@ -126,33 +134,33 @@ class GamePlayViewController: UIViewController {
         switch method {
         case .rock:
             if rockCircleImageView.image != UIImage(named:"circle_fixed") {
-            rockCircleImageView.image = UIImage(named: "circle_fixed")
+                rockCircleImageView.image = UIImage(named: "circle_fixed")
             }
             if paperCircleImageView.image != UIImage(named:"paper") {
-            paperCircleImageView.image = UIImage(named: "paper")
+                paperCircleImageView.image = UIImage(named: "paper")
             }
             if scissorsCircleImageView.image != UIImage(named:"scissors") {
-            scissorsCircleImageView.image = UIImage(named: "scissors")
+                scissorsCircleImageView.image = UIImage(named: "scissors")
             }
         case .paper:
             if rockCircleImageView.image != UIImage(named:"rock") {
-            rockCircleImageView.image = UIImage(named: "rock")
+                rockCircleImageView.image = UIImage(named: "rock")
             }
             if paperCircleImageView.image != UIImage(named:"circle_fixed") {
-            paperCircleImageView.image = UIImage(named: "circle_fixed")
+                paperCircleImageView.image = UIImage(named: "circle_fixed")
             }
             if scissorsCircleImageView.image != UIImage(named:"scissors") {
-            scissorsCircleImageView.image = UIImage(named: "scissors")
+                scissorsCircleImageView.image = UIImage(named: "scissors")
             }
         case .scissors:
             if rockCircleImageView.image != UIImage(named:"rock") {
-            rockCircleImageView.image = UIImage(named: "rock")
+                rockCircleImageView.image = UIImage(named: "rock")
             }
             if paperCircleImageView.image != UIImage(named:"paper") {
-            paperCircleImageView.image = UIImage(named: "paper")
+                paperCircleImageView.image = UIImage(named: "paper")
             }
             if scissorsCircleImageView.image != UIImage(named:"circle_fixed") {
-            scissorsCircleImageView.image = UIImage(named: "circle_fixed")
+                scissorsCircleImageView.image = UIImage(named: "circle_fixed")
             }
         }
     }
@@ -176,7 +184,31 @@ class GamePlayViewController: UIViewController {
         }
     }
 }
-
+extension GamePlayViewController: DeviceConnectionDelegate {
+    func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String]) {
+        if connectedDevices.count == 0 {
+            //If there is only one player left in the session, that player becomes the host.
+            self.isHost = true
+            self.deviceConnection?.startAdvertising()
+            OperationQueue.main.addOperation {
+                self.connectionLabel.text = "Connections:"
+                if self.isHost {
+                    self.startRoundButton.isUserInteractionEnabled = false
+                    self.startRoundButton.alpha = 0.5
+                }
+            }
+        } else {
+            OperationQueue.main.addOperation {
+                self.deviceConnection?.stopAdvertising()
+                self.connectionLabel.text = "Connections: \(connectedDevices)"
+                if self.isHost {
+                    self.startRoundButton.isUserInteractionEnabled = true
+                    self.startRoundButton.alpha = 1.0
+                }
+            }
+        }
+    }
+}
 extension GamePlayViewController: DeviceMethodDelegate {
     func methodSelected(manager: DeviceConnection, method: PlayerMethod) {
         opponentMethod = method
