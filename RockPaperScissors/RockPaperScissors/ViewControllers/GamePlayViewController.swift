@@ -23,6 +23,7 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var scissorsCircleImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startRoundButton: UIButton!
+    @IBOutlet weak var connectionLabel: UILabel!
     
     //MARK: Other Properties
     var deviceConnection: DeviceConnection?
@@ -31,30 +32,38 @@ class GamePlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+        deviceConnection?.methodDelegate = self
+        deviceConnection?.isReadyDelegate = self
+        deviceConnection?.deviceDelegate = self
         
     }
     override func viewWillAppear(_ animated: Bool) {
-       startRoundButton.isHidden = false
+        startRoundButton.isHidden = false
+        
         deviceConnection?.methodDelegate = self
         deviceConnection?.isReadyDelegate = self
         configureImageViews()
-//        self.modalPresentationStyle = .currentContext
+        
         timeLabel.isHidden = true
+        
         textLayer.isHidden = true
+        
         
         paperCircleImageView.isUserInteractionEnabled = true
         paperCircleImageView.alpha = 1.0
         
+        
         rockCircleImageView.isUserInteractionEnabled = true
         rockCircleImageView.alpha = 1.0
         
+        
         scissorsCircleImageView.isUserInteractionEnabled = true
         scissorsCircleImageView.alpha = 1.0
+        
+        
+        startRoundButton.isUserInteractionEnabled = false
+        startRoundButton.alpha = 0.5
     }
-    
     
 
     @IBAction func startRoundButtonTapped(_ sender: Any) {
@@ -176,7 +185,15 @@ class GamePlayViewController: UIViewController {
         }
     }
 }
-
+extension GamePlayViewController: DeviceConnectionDelegate {
+    func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String]) {
+        OperationQueue.main.addOperation {
+            self.connectionLabel.text = "Connections: \(connectedDevices)"
+            self.startRoundButton.isUserInteractionEnabled = true
+            self.startRoundButton.alpha = 1.0
+        }
+    }
+}
 extension GamePlayViewController: DeviceMethodDelegate {
     func methodSelected(manager: DeviceConnection, method: PlayerMethod) {
         opponentMethod = method

@@ -10,7 +10,7 @@ import UIKit
 
 class StartGameMenuViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
-    @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var joinGameButton: UIButton!
     
     let deviceConnection = DeviceConnection()
     
@@ -20,13 +20,16 @@ class StartGameMenuViewController: UIViewController {
         deviceConnection.deviceDelegate = self
     }
     
-    @IBAction func connectButton(_ sender: Any) {
+    @IBAction func hostGameButton(_ sender: Any) {
         deviceConnection.startAdvertising()
+    }
+    @IBAction func joinGameButton(_ sender: Any) {
         deviceConnection.startBrowsing()
-        connectButton.setTitle("Connecting...", for: .normal)
+        joinGameButton.setTitle("Connecting...", for: .normal)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let destinationVC = segue.destination as! GamePlayViewController
         destinationVC.deviceConnection = self.deviceConnection
     }
@@ -37,19 +40,8 @@ class StartGameMenuViewController: UIViewController {
 extension StartGameMenuViewController: DeviceConnectionDelegate {
     func connectedDevicesChanged(manager: DeviceConnection, connectedDevices: [String]) {
         OperationQueue.main.addOperation {
-            self.newGameButton.isHidden = false
-            self.connectButton.setTitle("Connected!", for: .normal)
+            self.performSegue(withIdentifier: "JoinGameSegue", sender: self)
         }
         deviceConnection.stopBrowsing()
-        deviceConnection.stopAdvertising()
-    }
-}
-extension StartGameMenuViewController: DeviceIsReadyDelegate {
-    func opponentIsReady(manager: DeviceConnection, isReady: Bool) {
-        if isReady == true {
-            let destinationVC = GamePlayViewController()
-            destinationVC.deviceConnection = self.deviceConnection
-            present(destinationVC, animated: true, completion: nil)
-        }
     }
 }
