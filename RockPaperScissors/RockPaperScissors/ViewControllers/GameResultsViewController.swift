@@ -81,6 +81,7 @@ class GameResultsViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func playAgainButtonTapped(_ sender: Any) {
+        //I don't need to make isHost persistent through the app because I am using `self.dismiss` here
         self.dismiss(animated: true) {
         }
     }
