@@ -92,6 +92,24 @@ class GameResultsViewController: UIViewController {
     
     //MARK: Private Methods
     private func victoryAnimation() {
+        
+        guard self.playerMethod != nil else {
+            self.tieGameLabel.text = "You Forfeit!"
+            self.tieGameLabel.isHidden = false
+            self.audioPlayer?.play(url: Bundle.main.url(forResource: "disappointed", withExtension: "mp3"))
+            return
+        }
+        
+        if !NewGameController.shared.isSinglePlayer {
+            guard self.opponentMethod != nil else {
+                self.tieGameLabel.text = "You Win By Forfeit!"
+                self.tieGameLabel.isHidden = false
+                self.audioPlayer?.play(url: Bundle.main.url(forResource: "disappointed", withExtension: "mp3"))
+                return
+            }
+        }
+        
+        
         let animationDuration = 3.0
         let position: CGFloat = 100.0
         UIView.animateKeyframes(withDuration: animationDuration, delay: 0.0, options: .calculationModeLinear, animations: {
