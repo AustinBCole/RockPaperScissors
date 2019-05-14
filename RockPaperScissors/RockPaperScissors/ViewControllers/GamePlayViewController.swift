@@ -67,6 +67,9 @@ class GamePlayViewController: UIViewController {
         }
         if NewGameController.shared.isSinglePlayer {
             connectionLabel.isHidden = true
+            
+            startRoundButton.isEnabled = true
+            startRoundButton.alpha = 1.0
         }
         
         if !NewGameController.shared.isSinglePlayer && deviceConnection?.session.connectedPeers != nil && NewGameController.shared.isFirstRound != true {
