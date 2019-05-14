@@ -80,7 +80,7 @@
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="25.637181409295355"/>
         </scene>
-        <!--Select Method-->
+        <!--Start Round and Select Method-->
         <scene sceneID="ruy-KQ-ixY">
             <objects>
                 <viewController id="vsN-Mw-fu6" customClass="GamePlayViewController" customModule="RockPaperScissors" customModuleProvider="target" sceneMemberID="viewController">
@@ -142,7 +142,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bjm-Ec-1r1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Method" id="tYT-Vx-YsD"/>
+                    <navigationItem key="navigationItem" title="Start Round and Select Method" id="tYT-Vx-YsD"/>
                     <connections>
                         <outlet property="connectionLabel" destination="EMd-GY-8qB" id="eU0-Ff-DFb"/>
                         <outlet property="paperCircleImageView" destination="srO-YB-tty" id="tn7-TM-V17"/>
