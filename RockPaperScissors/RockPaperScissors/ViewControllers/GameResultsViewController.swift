@@ -108,6 +108,8 @@ class GameResultsViewController: UIViewController {
                 self.audioPlayer?.play(url: Bundle.main.url(forResource: "disappointed", withExtension: "mp3"))
                 return
             }
+            playAgainBarButton.isEnabled = true
+            playAgainBarButton.tintColor = UIColor.black.withAlphaComponent(1.0)
         }
         
         
