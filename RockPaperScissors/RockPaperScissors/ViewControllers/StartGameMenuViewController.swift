@@ -21,9 +21,13 @@ class StartGameMenuViewController: UIViewController {
         super.viewDidLoad()
         deviceConnection.deviceDelegate = self
     }
+    override func viewWillAppear(_ animated: Bool) {
+        deviceConnection.stopAdvertising()
+    }
     
     @IBAction func hostGameButton(_ sender: Any) {
         deviceConnection.startAdvertising()
+        deviceConnection.stopBrowsing()
     }
     @IBAction func joinGameButton(_ sender: Any) {
         deviceConnection.startBrowsing()
@@ -32,6 +36,7 @@ class StartGameMenuViewController: UIViewController {
     @IBAction func singlePlayerButton(_ sender: Any) {
         NewGameController.shared.isSinglePlayer = true
         NewGameController.shared.isHost = true
+        deviceConnection.stopBrowsing()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
