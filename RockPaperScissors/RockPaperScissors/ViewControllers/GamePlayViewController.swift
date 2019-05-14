@@ -192,6 +192,8 @@ class GamePlayViewController: UIViewController {
     
     private func presentNoPeersAlert() {
         let noPeersAlert = UIAlertController(title: "No Connected Devices", message: "It appears that there are no other devices connected to your session of Scissors, Paper, Rock!. Please go back to the main menu and try to connect again, or play in single player mode.", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        noPeersAlert.addAction(okayAction)
         self.present(noPeersAlert, animated: true, completion: nil)
         startRoundButton.isEnabled = false
         startRoundButton.alpha = 0.5
