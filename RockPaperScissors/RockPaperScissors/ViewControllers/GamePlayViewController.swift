@@ -62,6 +62,9 @@ class GamePlayViewController: UIViewController {
         startRoundButton.isUserInteractionEnabled = false
         startRoundButton.alpha = 0.5
         }
+        if NewGameController.shared.isSinglePlayer {
+            connectionLabel.isHidden = true
+        }
     }
     
     

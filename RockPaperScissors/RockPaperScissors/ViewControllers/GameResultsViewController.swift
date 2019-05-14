@@ -23,7 +23,7 @@ class GameResultsViewController: UIViewController {
     @IBOutlet weak var winningImageViewTwo: UIImageView!
     @IBOutlet weak var winningImageViewThree: UIImageView!
     
-    @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var playAgainBarButton: UIBarButtonItem!
     @IBOutlet weak var tieGameLabel: UILabel!
     
     @IBOutlet weak var losingImageView: UIImageView!
@@ -39,6 +39,7 @@ class GameResultsViewController: UIViewController {
         view.addBackground()
         audioPlayer = AudioPlayer()
         // Do any additional setup after loading the view.
+        self.navigationItem.backBarButtonItem?.title = "Play Again"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,7 +53,8 @@ class GameResultsViewController: UIViewController {
         winningImageViewTwo.isHidden = true
         winningImageViewThree.isHidden = true
         powImageView.isHidden = true
-        playAgainButton.isHidden = true
+        playAgainBarButton.isEnabled = false
+        playAgainBarButton.tintColor = UIColor.black.withAlphaComponent(0.5)
         
         let randomMethodArray: Array<PlayerMethod> = [.rock, .paper, .scissors]
         
@@ -150,7 +152,8 @@ class GameResultsViewController: UIViewController {
         }, completion: { completed in
             if completed {
                 self.losingImageViewThree.isHidden = true
-                self.playAgainButton.isHidden = false
+                self.playAgainBarButton.isEnabled = true
+                self.playAgainBarButton.tintColor = UIColor.black.withAlphaComponent(1.0)
                 
                 if UIImage(named: (self.playerMethod?.rawValue)!) == self.winningImageView.image {
                     self.tieGameLabel.text = "You Win!"
@@ -195,7 +198,8 @@ class GameResultsViewController: UIViewController {
                 self.winningImageViewTwo.isHidden = true
                 self.losingImageViewTwo.isHidden = true
                 self.tieGameLabel.isHidden = false
-                self.playAgainButton.isHidden = false
+                self.playAgainBarButton.isEnabled = true
+                self.playAgainBarButton.tintColor = UIColor.black.withAlphaComponent(1.0)
                 
                 self.audioPlayer?.play(url: Bundle.main.url(forResource: "disappointed", withExtension: "mp3"))
                 
