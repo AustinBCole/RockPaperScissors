@@ -42,6 +42,9 @@ class GamePlayViewController: UIViewController {
         startRoundButton.isHidden = false
         configureImageViews()
         
+        startRoundButton.isEnabled = false
+        startRoundButton.alpha = 0.5
+        
         timeLabel.isHidden = true
         
         textLayer.isHidden = true
@@ -64,6 +67,15 @@ class GamePlayViewController: UIViewController {
         }
         if NewGameController.shared.isSinglePlayer {
             connectionLabel.isHidden = true
+        }
+        
+        if !NewGameController.shared.isSinglePlayer && deviceConnection?.session.connectedPeers != nil && NewGameController.shared.isFirstRound != true {
+            guard (deviceConnection?.session.connectedPeers.count)! > 0 else {
+                presentNoPeersAlert()
+                return
+            }
+            return
+            
         }
     }
     
@@ -176,6 +188,13 @@ class GamePlayViewController: UIViewController {
         configureTextLayer(textLayer: textLayer)
         configureTimer()
         addGestureRecognizers()
+    }
+    
+    private func presentNoPeersAlert() {
+        let noPeersAlert = UIAlertController(title: "No Connected Devices", message: "It appears that there are no other devices connected to your session of Scissors, Paper, Rock!. Please go back to the main menu and try to connect again, or play in single player mode.", preferredStyle: .alert)
+        self.present(noPeersAlert, animated: true, completion: nil)
+        startRoundButton.isEnabled = false
+        startRoundButton.alpha = 0.5
     }
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
