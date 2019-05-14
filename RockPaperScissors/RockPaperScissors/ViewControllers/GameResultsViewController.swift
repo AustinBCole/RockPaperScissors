@@ -39,7 +39,6 @@ class GameResultsViewController: UIViewController {
         view.addBackground()
         audioPlayer = AudioPlayer()
         // Do any additional setup after loading the view.
-        self.navigationItem.backBarButtonItem?.title = "Play Again"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
