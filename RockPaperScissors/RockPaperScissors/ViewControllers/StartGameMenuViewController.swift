@@ -20,11 +20,16 @@ class StartGameMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceConnection.deviceDelegate = self
+        presentInstructionsAlert()
     }
     override func viewWillAppear(_ animated: Bool) {
         deviceConnection.stopAdvertising()
     }
     
+    
+    @IBAction func helpButtonTapped(_ sender: Any) {
+        presentInstructionsAlert()
+    }
     @IBAction func hostGameButton(_ sender: Any) {
         deviceConnection.startAdvertising()
         deviceConnection.stopBrowsing()
@@ -37,6 +42,13 @@ class StartGameMenuViewController: UIViewController {
         NewGameController.shared.isSinglePlayer = true
         NewGameController.shared.isHost = true
         deviceConnection.stopBrowsing()
+    }
+    
+    private func presentInstructionsAlert() {
+        let instructionsAlert = UIAlertController(title: "Welcome!", message: "To start a game, please tap the \"Host Game\" button. You will then be redirected to the gameplay view to await the connection of a nearby device. To join a game that has already been hosted by a nearby device, please tap the \"Join Game\" button. You will be redirected to the gameplay view where the host can start the round. If you would prefer to go it alone, tap the \"Single Player\" button. Enjoy!", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Got it!", style: .default, handler: nil)
+        instructionsAlert.addAction(okayAction)
+        self.present(instructionsAlert, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
